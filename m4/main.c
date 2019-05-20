@@ -1,5 +1,6 @@
 #include "chip.h"
 #include "board.h"
+#include "m0_img_ldr.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -7,12 +8,17 @@
 
 #define CPU_USAGE 50
 #define TICKRATE_HZ 1000
-#define TICKRATE_HZ_TIM1 1
+
 #define LPC_UART LPC_USART0
 #define UARTx_IRQn  USART0_IRQn
 #define UARTx_IRQHandler UART0_IRQHandler
 #define _GPDMA_CONN_UART_Tx GPDMA_CONN_UART0_Tx
 #define _GPDMA_CONN_UART_Rx GPDMA_CONN_UART0_Rx
+
+#define SHARED_MUTEX 0x10088000
+#define IPC_IRQ_Priority    7
+#define IPC_IRQn       M0APP_IRQn
+static volatile int notify = 0;
 
 static uint8_t dmaChannelNumTx, dmaChannelNumRx;
 static volatile uint32_t channelTC;	/* Terminal Counter flag for Channel */
@@ -24,9 +30,11 @@ static uint32_t WorkingTime = 0;
 static uint32_t SleepingTime = 0;
 static uint32_t LastTime = 0;
 
-static uint32_t tick_ct = 0;
 static float pi;
 static uint32_t precision = 0;
+
+static volatile uint32_t tick_ct = 0;
+static volatile uint8_t mutex = (uint8_t) SHARED_MUTEX;
 
 void idle(void);
 
@@ -51,6 +59,12 @@ void DMA_IRQHandler(void)
 	}
 }
 
+void M0APP_IRQHandler(void)
+{
+	LPC_CREG->M0APPTXEVENT = 0;
+	notify = 1;
+}
+
 static void debug(char *msg, ...)
 {
 	char buff[80];
@@ -58,6 +72,24 @@ static void debug(char *msg, ...)
 	va_list args;
 	va_start(args, msg);
 	vsprintf(buff, msg, args);
+	
+	if (mutex) {
+		mutex = 0;
+		__DSB();
+	} else {
+		while(!notify) {}
+		mutex = 0;
+		__DSB();
+		notify = 0;
+	}
+	
+	Chip_GPDMA_Init(LPC_GPDMA);
+	/* Setting GPDMA interrupt */
+	NVIC_DisableIRQ(DMA_IRQn);
+	NVIC_SetPriority(DMA_IRQn, ((0x01 << 3) | 0x01));
+	NVIC_EnableIRQ(DMA_IRQn);
+	
+	dmaChannelNumTx = Chip_GPDMA_GetFreeChannel(LPC_GPDMA, _GPDMA_CONN_UART_Tx);
 
 	isDMATx = ENABLE;
 	channelTC = channelTCErr = 0;
@@ -67,6 +99,12 @@ static void debug(char *msg, ...)
 					  GPDMA_TRANSFERTYPE_M2P_CONTROLLER_DMA,
 					  strlen(buff));
 	while (!channelTC) {}
+		
+	Chip_GPDMA_DeInit(LPC_GPDMA);
+		
+	mutex = 1;
+	__DSB();
+	__SEV();
 }
 
 float calc_pi(int n) {
@@ -84,12 +122,12 @@ float calc_pi(int n) {
 }
 
 int main(void) {
-	uint32_t timerFreq;
 	
 	SystemCoreClockUpdate();
 	Board_Init();
 	
-	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
+	mutex = 1;
+	tick_ct = 0;
 	
 	Chip_UART_Init(LPC_UART);
 	Chip_UART_SetBaud(LPC_UART, 115200);
@@ -99,21 +137,21 @@ int main(void) {
 	Chip_UART_TXEnable(LPC_UART);
 	Chip_UART_SetupFIFOS(LPC_UART, (UART_FCR_FIFO_EN | UART_FCR_RX_RS | UART_FCR_TX_RS | UART_FCR_DMAMODE_SEL | UART_FCR_TRG_LEV0));
 	
-	Chip_GPDMA_Init(LPC_GPDMA);
-	/* Setting GPDMA interrupt */
-	NVIC_DisableIRQ(DMA_IRQn);
-	NVIC_SetPriority(DMA_IRQn, ((0x01 << 3) | 0x01));
-	NVIC_EnableIRQ(DMA_IRQn);
+	if (M0Image_Boot(CPUID_M0APP, (uint32_t) BASE_ADDRESS_M0APP) < 0) {
+		debug("Unable to BOOT M0APP Core!\r\n");
+	} else {
+		debug("M4: M0APP Core BOOT successful!\r\n");
+	}
 	
-	dmaChannelNumTx = Chip_GPDMA_GetFreeChannel(LPC_GPDMA, _GPDMA_CONN_UART_Tx);
+	NVIC_SetPriority(IPC_IRQn, IPC_IRQ_Priority);
+	NVIC_EnableIRQ(IPC_IRQn);
+	
+	SysTick_Config(SystemCoreClock / TICKRATE_HZ);
 	
 	/* Enable timer 1 clock and reset it */
 	Chip_TIMER_Init(LPC_TIMER1);
 	Chip_RGU_TriggerReset(RGU_TIMER1_RST);
 	while (Chip_RGU_InReset(RGU_TIMER1_RST)) {}
-
-	/* Get timer 1 peripheral clock rate */
-	timerFreq = Chip_Clock_GetRate(CLK_MX_TIMER1);
 
 	/* Timer setup as counter incrementing TC each clock */
 	Chip_TIMER_PrescaleSet(LPC_TIMER1, 0);
@@ -135,6 +173,7 @@ void idle(void) {
 	t = Chip_TIMER_ReadCount(LPC_TIMER1);
 	
 	__WFI();
+	__SEV();
 	
 	SleepingTime += Chip_TIMER_ReadCount(LPC_TIMER1) - t;
 	
@@ -146,8 +185,9 @@ void idle(void) {
 		LastTime = tick_ct;
 		
 		if (((float)WorkingTime / (float)(SleepingTime + WorkingTime) * 100) < CPU_USAGE) precision += 10;
-		debug("PI: %5.15f; Precision: %u; W: %u; S: %u; L: %5.2f\r\n", pi, precision, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(SleepingTime + WorkingTime) * 100));
-			
+		debug("M4:: PI: %5.15f; Precision: %u; W: %u; S: %u; L: %5.2f\r\n", pi, precision, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(SleepingTime + WorkingTime) * 100));
+		
+		Board_LED_Set(0, 0);
 		SleepingTime = 0;
 		WorkingTime = 0;
 	}

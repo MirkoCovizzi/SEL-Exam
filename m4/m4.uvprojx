@@ -397,6 +397,21 @@
               <FileType>1</FileType>
               <FilePath>..\startup_code\sysinit.c</FilePath>
             </File>
+            <File>
+              <FileName>m0_img_ldr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\m0_img_ldr.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_multicore_cfg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app_multicore_cfg.h</FilePath>
+            </File>
+            <File>
+              <FileName>m0_img_ldr.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\m0_img_ldr.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

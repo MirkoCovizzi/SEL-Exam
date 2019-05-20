@@ -30,9 +30,18 @@ Rebuild target 'm0'
 assembling keil_startup_lpc43xx_m0app.s...
 compiling sysinit.c...
 compiling main.c...
+main.c(129): warning:  #177-D: variable "timerFreq"  was declared but never referenced
+  	uint32_t timerFreq;
+main.c(32): warning:  #550-D: variable "is_prime"  was set but never used
+  static int is_prime = 0;
+main.c(34): warning:  #177-D: variable "prime_test_4"  was declared but never referenced
+  static uint32_t prime_test_4 = 1009;
+main.c(35): warning:  #177-D: variable "prime_test_5"  was declared but never referenced
+  static uint32_t prime_test_5 = 10007;
+main.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=308 RO-data=208 RW-data=0 ZI-data=1632  
-".\Objects\m0app.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=8800 RO-data=924 RW-data=204 ZI-data=1636  
+".\Objects\m0app.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -46,7 +55,7 @@ Package Vendor: Keil
   C:\Keil_v5\ARM\PACK\Keil\LPC4300_DFP\2.8.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

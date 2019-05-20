@@ -63,3 +63,7 @@
 .\objects\main.o: ..\lpc_core\lpc_board\boards_43xx\nxp_lpcxpresso_4337\board.h
 .\objects\main.o: ..\lpc_core\lpc_board\board_common\board_api.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
