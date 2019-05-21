@@ -18,7 +18,6 @@
 #define SHARED_MUTEX 0x10088000
 #define IPC_IRQ_Priority    7
 #define IPC_IRQn       M0APP_IRQn
-static volatile int notify = 0;
 
 static uint8_t dmaChannelNumTx, dmaChannelNumRx;
 static volatile uint32_t channelTC;	/* Terminal Counter flag for Channel */
@@ -35,6 +34,8 @@ static uint32_t precision = 0;
 
 static volatile uint32_t tick_ct = 0;
 static volatile uint8_t mutex = (uint8_t) SHARED_MUTEX;
+#define LOCKED 1
+#define UNLOCKED 0
 
 void idle(void);
 
@@ -62,7 +63,25 @@ void DMA_IRQHandler(void)
 void M0APP_IRQHandler(void)
 {
 	LPC_CREG->M0APPTXEVENT = 0;
-	notify = 1;
+}
+
+void lock_mutex(void) {
+	while (mutex == LOCKED) {
+		__WFE();
+	}
+	
+	mutex = LOCKED;
+	
+	__DMB();
+}
+
+void unlock_mutex(void) {
+	__DMB();
+	
+	mutex = UNLOCKED;
+	
+	__DSB();
+	__SEV();
 }
 
 static void debug(char *msg, ...)
@@ -73,15 +92,7 @@ static void debug(char *msg, ...)
 	va_start(args, msg);
 	vsprintf(buff, msg, args);
 	
-	if (mutex) {
-		mutex = 0;
-		__DSB();
-	} else {
-		while(!notify) {}
-		mutex = 0;
-		__DSB();
-		notify = 0;
-	}
+	lock_mutex();
 	
 	Chip_GPDMA_Init(LPC_GPDMA);
 	/* Setting GPDMA interrupt */
@@ -101,10 +112,8 @@ static void debug(char *msg, ...)
 	while (!channelTC) {}
 		
 	Chip_GPDMA_DeInit(LPC_GPDMA);
-		
-	mutex = 1;
-	__DSB();
-	__SEV();
+
+	unlock_mutex();
 }
 
 float calc_pi(int n) {
@@ -126,7 +135,7 @@ int main(void) {
 	SystemCoreClockUpdate();
 	Board_Init();
 	
-	mutex = 1;
+	mutex = UNLOCKED;
 	tick_ct = 0;
 	
 	Chip_UART_Init(LPC_UART);
@@ -167,27 +176,21 @@ int main(void) {
 void idle(void) {
 	uint32_t t;
 	
-	__disable_irq();
-	
 	WorkingTime += Chip_TIMER_ReadCount(LPC_TIMER1) - l;
 	t = Chip_TIMER_ReadCount(LPC_TIMER1);
 	
 	__WFI();
-	__SEV();
 	
 	SleepingTime += Chip_TIMER_ReadCount(LPC_TIMER1) - t;
 	
 	l = Chip_TIMER_ReadCount(LPC_TIMER1);
-	
-	__enable_irq();
 	
 	if ((tick_ct - LastTime) >= 1000) {
 		LastTime = tick_ct;
 		
 		if (((float)WorkingTime / (float)(SleepingTime + WorkingTime) * 100) < CPU_USAGE) precision += 10;
 		debug("M4:: PI: %5.15f; Precision: %u; W: %u; S: %u; L: %5.2f\r\n", pi, precision, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(SleepingTime + WorkingTime) * 100));
-		
-		Board_LED_Set(0, 0);
+
 		SleepingTime = 0;
 		WorkingTime = 0;
 	}

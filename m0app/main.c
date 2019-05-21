@@ -17,7 +17,6 @@
 #define SHARED_MUTEX 0x10088000
 #define IPC_IRQ_Priority    7
 #define IPC_IRQn       M4_IRQn
-static volatile int notify = 0;
 
 static uint8_t dmaChannelNumTx, dmaChannelNumRx;
 static volatile uint32_t channelTC;	/* Terminal Counter flag for Channel */
@@ -32,11 +31,13 @@ static uint32_t LastTime = 0;
 static int is_prime = 0;
 static uint32_t prime_test_3 = 101;
 static uint32_t prime_test_4 = 1009;
-static uint32_t prime_test_5 = 10007;
+static uint32_t prime_test_5 = 10007; //Using about 80%
 static uint32_t prime_test_7 = 1000003;
 
 static volatile uint32_t tick_ct = 0;
 static volatile uint8_t mutex = (uint8_t) SHARED_MUTEX;
+#define LOCKED 1
+#define UNLOCKED 0
 
 void idle(void);
 
@@ -60,15 +61,33 @@ void DMA_IRQHandler(void)
 void M4_IRQHandler(void)
 {
 	LPC_CREG->M4TXEVENT = 0;
-	notify = 1;
 }
 
 void TIMER3_IRQHandler(void)
 {
-	if (Chip_TIMER_MatchPending(LPC_TIMER1, 1)) {
-		Chip_TIMER_ClearMatch(LPC_TIMER1, 1);
+	if (Chip_TIMER_MatchPending(LPC_TIMER3, 1)) {
+		Chip_TIMER_ClearMatch(LPC_TIMER3, 1);
 		tick_ct += 1;
 	}
+}
+
+void lock_mutex(void) {
+	while (mutex == LOCKED) {
+		__WFE();
+	}
+	
+	mutex = LOCKED;
+	
+	__DMB();
+}
+
+void unlock_mutex(void) {
+	__DMB();
+	
+	mutex = UNLOCKED;
+	
+	__DSB();
+	__SEV();
 }
 
 static void debug(char *msg, ...)
@@ -79,15 +98,7 @@ static void debug(char *msg, ...)
 	va_start(args, msg);
 	vsprintf(buff, msg, args);
 	
-	if (mutex) {
-		mutex = 0;
-		__DSB();
-	} else {
-		while(!notify) {}
-		mutex = 0;
-		__DSB();
-		notify = 0;
-	}
+	lock_mutex();
 	
 	Chip_GPDMA_Init(LPC_GPDMA);
 	/* Setting GPDMA interrupt */
@@ -107,10 +118,9 @@ static void debug(char *msg, ...)
 	while (!channelTC) {}
 		
 	Chip_GPDMA_DeInit(LPC_GPDMA);
-		
-	mutex = 1;
-	__DSB();
-	__SEV();
+	
+	unlock_mutex();
+
 }
 
 int check_prime(uint32_t a)
@@ -143,11 +153,30 @@ int main(void)
 	/* Timer setup as counter incrementing TC each clock */
 	Chip_TIMER_PrescaleSet(LPC_TIMER2, 0);
 	Chip_TIMER_Enable(LPC_TIMER2);
+		
+	/* Enable timer 3 clock and reset it */
+	Chip_TIMER_Init(LPC_TIMER3);
+	Chip_RGU_TriggerReset(RGU_TIMER3_RST);
+	while (Chip_RGU_InReset(RGU_TIMER3_RST)) {}
+
+	/* Get timer 3 peripheral clock rate */
+	timerFreq = Chip_Clock_GetRate(CLK_MX_TIMER3);
+
+	/* Timer setup for match and interrupt at TICKRATE_HZ */
+	Chip_TIMER_Reset(LPC_TIMER3);
+	Chip_TIMER_MatchEnableInt(LPC_TIMER3, 1);
+	Chip_TIMER_SetMatch(LPC_TIMER3, 1, (timerFreq / TICKRATE_HZ));
+	Chip_TIMER_ResetOnMatchEnable(LPC_TIMER3, 1);
+	Chip_TIMER_Enable(LPC_TIMER3);
+
+	/* Enable timer interrupt */
+	NVIC_EnableIRQ(TIMER3_IRQn);
+	NVIC_ClearPendingIRQ(TIMER3_IRQn);
 	
 	while(1) {
-		is_prime = check_prime(prime_test_7);
+		is_prime = check_prime(prime_test_5);
 		
-		Board_LED_Set(0, 1);
+		idle();
 	}
 }
 
@@ -166,7 +195,7 @@ void idle(void) {
 	if ((tick_ct - LastTime) >= 1000) {
 		LastTime = tick_ct;
 		
-		debug("M0:: Prime: %u; W: %u; S: %u\r\n", prime_test_3, WorkingTime, SleepingTime);
+		debug("M0:: Prime: %u; W: %u; S: %u; L: %5.2f\r\n", prime_test_5, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(SleepingTime + WorkingTime) * 100));
 		
 		SleepingTime = 0;
 		WorkingTime = 0;
