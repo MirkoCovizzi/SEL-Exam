@@ -18,13 +18,6 @@
 #define LPC_UART LPC_USART0
 #define UARTx_IRQn  USART0_IRQn
 #define UARTx_IRQHandler UART0_IRQHandler
-#define _GPDMA_CONN_UART_Tx GPDMA_CONN_UART0_Tx
-#define _GPDMA_CONN_UART_Rx GPDMA_CONN_UART0_Rx
-
-static uint8_t dmaChannelNumTx, dmaChannelNumRx;
-static volatile uint32_t channelTC;	/* Terminal Counter flag for Channel */
-static volatile uint32_t channelTCErr;
-static FunctionalState  isDMATx = ENABLE;
 
 static uint32_t l = 0;
 static uint32_t WorkingTime = 0;
@@ -44,23 +37,6 @@ void debug(char *, ...);
 
 void SysTick_Handler(void) {	
 	tick_ct += 1;
-}
-
-void DMA_IRQHandler(void)
-{
-	uint8_t dmaChannelNum;
-	if (isDMATx) {
-		dmaChannelNum = dmaChannelNumTx;
-	}
-	else {
-		dmaChannelNum = dmaChannelNumRx;
-	}
-	if (Chip_GPDMA_Interrupt(LPC_GPDMA, dmaChannelNum) == SUCCESS) {
-		channelTC++;
-	}
-	else {
-		channelTCErr++;
-	}
 }
 
 void M0APP_IRQHandler(void)
