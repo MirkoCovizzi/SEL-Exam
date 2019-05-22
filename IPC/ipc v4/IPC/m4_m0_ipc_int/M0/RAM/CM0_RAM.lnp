@@ -1,0 +1,12 @@
+--cpu Cortex-M0
+".\ram\system_lpc43xx.o"
+".\ram\core_cm0.o"
+".\ram\scu.o"
+".\ram\startup_lpc43xx_m0.o"
+".\ram\ipc_int.o"
+".\ram\slave_interrupt_callback.o"
+".\ram\main.o"
+--library_type=microlib --diag_suppress 6314,6320,6312 --strict --scatter "..\platform\M0_Ram.sct"
+--pad=0xFF --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\RAM\CM0_RAM.map" -o .\RAM\CM0_RAM.axf

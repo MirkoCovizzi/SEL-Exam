@@ -1,0 +1,13 @@
+.\ram\system_lpc43xx.o: ..\..\..\common\system_LPC43xx.c
+.\ram\system_lpc43xx.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\ram\system_lpc43xx.o: ..\..\..\common\LPC43xx_M0.h
+.\ram\system_lpc43xx.o: ..\..\..\common\LPC43xx.h
+.\ram\system_lpc43xx.o: ..\..\..\common\LPC43xx_M0.h
+.\ram\system_lpc43xx.o: ..\..\..\common\core_cm0.h
+.\ram\system_lpc43xx.o: ..\..\..\common\core_cmInstr.h
+.\ram\system_lpc43xx.o: ..\..\..\common\core_cmFunc.h
+.\ram\system_lpc43xx.o: ..\..\..\common\system_LPC43xx_M0.h
+.\ram\system_lpc43xx.o: ..\..\..\common\system_LPC43xx.h
+.\ram\system_lpc43xx.o: ..\..\..\common\scu.h
+.\ram\system_lpc43xx.o: ..\..\..\common\type.h
+.\ram\system_lpc43xx.o: ..\..\..\common\config.h

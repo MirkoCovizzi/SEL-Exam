@@ -1,0 +1,16 @@
+.\ram\ipc_int.o: ..\..\api\interrupt\src\ipc_int.c
+.\ram\ipc_int.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\ram\ipc_int.o: ..\..\..\common\type.h
+.\ram\ipc_int.o: ..\platform\platform_config.h
+.\ram\ipc_int.o: ..\..\..\common\LPC43xx.h
+.\ram\ipc_int.o: ..\..\..\common\LPC43xx_M0.h
+.\ram\ipc_int.o: ..\..\..\common\LPC43xx.h
+.\ram\ipc_int.o: ..\..\..\common\core_cm0.h
+.\ram\ipc_int.o: ..\..\..\common\core_cmInstr.h
+.\ram\ipc_int.o: ..\..\..\common\core_cmFunc.h
+.\ram\ipc_int.o: ..\..\..\common\system_LPC43xx_M0.h
+.\ram\ipc_int.o: ..\..\..\common\system_LPC43xx.h
+.\ram\ipc_int.o: ..\..\..\common\scu.h
+.\ram\ipc_int.o: ..\..\api\interrupt\inc\ipc_int.h
+.\ram\ipc_int.o: ..\M4\M4_rpc\master_interrupt_callback.h
+.\ram\ipc_int.o: .\M0_rpc\slave_interrupt_callback.h

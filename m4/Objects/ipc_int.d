@@ -1,0 +1,17 @@
+.\objects\ipc_int.o: ipc_int.c
+.\objects\ipc_int.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\ipc_int.o: ..\lpc_core\lpc_chip\chip_common\lpc_types.h
+.\objects\ipc_int.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\ipc_int.o: platform_config.h
+.\objects\ipc_int.o: C:\Keil_v5\ARM\PACK\Keil\LPC4300_DFP\2.8.0\Device\Include\LPC43xx.h
+.\objects\ipc_int.o: ..\CMSIS\CMSIS\Include\core_cm4.h
+.\objects\ipc_int.o: ..\CMSIS\CMSIS\Include\core_cmInstr.h
+.\objects\ipc_int.o: ..\CMSIS\CMSIS\Include\core_cmFunc.h
+.\objects\ipc_int.o: ..\CMSIS\CMSIS\Include\core_cm4_simd.h
+.\objects\ipc_int.o: C:\Keil_v5\ARM\PACK\Keil\LPC4300_DFP\2.8.0\Device\Include\system_LPC43xx.h
+.\objects\ipc_int.o: ipc_int.h
+.\objects\ipc_int.o: ..\lpc_core\lpc_board\boards_43xx\nxp_lpcxpresso_4337\board.h
+.\objects\ipc_int.o: ..\lpc_core\lpc_chip\chip_18xx_43xx\chip.h
+.\objects\ipc_int.o: ..\lpc_core\lpc_chip\chip_18xx_43xx\config_43xx\sys_config.h
+.\objects\ipc_int.o: ..\lpc_core\lpc_chip\chip_18xx_43xx\cmsis.h
+.\objects\ipc_int.o: ..\lpc_core\lpc_chip\chip_18xx_43xx\config_43xx\cmsis_43xx.h

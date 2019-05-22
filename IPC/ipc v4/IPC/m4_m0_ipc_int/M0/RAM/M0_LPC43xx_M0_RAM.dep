@@ -1,0 +1,75 @@
+Dependencies for Project 'M0', Target 'LPC43xx_M0_RAM': (DO NOT MODIFY !)
+F (..\..\..\common\system_LPC43xx.c)(0x4F44A988)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork --split_sections -I ..\..\..\common -I ..\..\api\interrupt\inc -I ..\platform -I .\M0_rpc -I ..\M4\M4_rpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\NXP\LPC11xx-D__UVISION_VERSION="526" -DCORE_M0 -DIPC_SLAVE-o .\ram\system_lpc43xx.o --omf_browse .\ram\system_lpc43xx.crf --depend .\ram\system_lpc43xx.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F3DAE)
+I (..\..\..\common\LPC43xx_M0.h)(0x4F44A988)
+I (..\..\..\common\LPC43xx.h)(0x4F44A988)
+I (..\..\..\common\core_cm0.h)(0x4F44A988)
+I (..\..\..\common\core_cmInstr.h)(0x4F44A988)
+I (..\..\..\common\core_cmFunc.h)(0x4F44A988)
+I (..\..\..\common\system_LPC43xx_M0.h)(0x4F44A988)
+I (..\..\..\common\system_LPC43xx.h)(0x4F44A988)
+I (..\..\..\common\scu.h)(0x4F44A988)
+I (..\..\..\common\type.h)(0x4F44A988)
+I (..\..\..\common\config.h)(0x4F44A988)
+F (..\..\..\common\core_cm0.c)(0x4F44A988)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork --split_sections -I ..\..\..\common -I ..\..\api\interrupt\inc -I ..\platform -I .\M0_rpc -I ..\M4\M4_rpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\NXP\LPC11xx-D__UVISION_VERSION="526" -DCORE_M0 -DIPC_SLAVE-o .\ram\core_cm0.o --omf_browse .\ram\core_cm0.crf --depend .\ram\core_cm0.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F3DAE)
+F (..\..\..\common\scu.c)(0x4F44A988)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork --split_sections -I ..\..\..\common -I ..\..\api\interrupt\inc -I ..\platform -I .\M0_rpc -I ..\M4\M4_rpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\NXP\LPC11xx-D__UVISION_VERSION="526" -DCORE_M0 -DIPC_SLAVE-o .\ram\scu.o --omf_browse .\ram\scu.crf --depend .\ram\scu.d)
+I (..\..\..\common\LPC43xx_M0.h)(0x4F44A988)
+I (..\..\..\common\LPC43xx.h)(0x4F44A988)
+I (..\..\..\common\core_cm0.h)(0x4F44A988)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F3DAE)
+I (..\..\..\common\core_cmInstr.h)(0x4F44A988)
+I (..\..\..\common\core_cmFunc.h)(0x4F44A988)
+I (..\..\..\common\system_LPC43xx_M0.h)(0x4F44A988)
+I (..\..\..\common\system_LPC43xx.h)(0x4F44A988)
+I (..\..\..\common\scu.h)(0x4F44A988)
+I (..\..\..\common\type.h)(0x4F44A988)
+F (..\platform\startup_LPC43xx_M0.s)(0x4F44A994)(--cpu Cortex-M0 --li -g --16 --apcs=interwork --pd "__MICROLIB SETA 1"-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\NXP\LPC11xx--pd "__UVISION_VERSION SETA 526" --pd "NO_CRP SETA 1" --pd "IPC_SLAVE SETA 1"-o .\ram\startup_lpc43xx_m0.o --depend .\ram\startup_lpc43xx_m0.d)
+F (..\..\api\interrupt\src\ipc_int.c)(0x4F44A9A8)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork --split_sections -I ..\..\..\common -I ..\..\api\interrupt\inc -I ..\platform -I .\M0_rpc -I ..\M4\M4_rpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\NXP\LPC11xx-D__UVISION_VERSION="526" -DCORE_M0 -DIPC_SLAVE-o .\ram\ipc_int.o --omf_browse .\ram\ipc_int.crf --depend .\ram\ipc_int.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F3DAE)
+I (..\..\..\common\type.h)(0x4F44A988)
+I (..\platform\platform_config.h)(0x4F44A994)
+I (..\..\..\common\LPC43xx.h)(0x4F44A988)
+I (..\..\..\common\LPC43xx_M0.h)(0x4F44A988)
+I (..\..\..\common\core_cm0.h)(0x4F44A988)
+I (..\..\..\common\core_cmInstr.h)(0x4F44A988)
+I (..\..\..\common\core_cmFunc.h)(0x4F44A988)
+I (..\..\..\common\system_LPC43xx_M0.h)(0x4F44A988)
+I (..\..\..\common\system_LPC43xx.h)(0x4F44A988)
+I (..\..\..\common\scu.h)(0x4F44A988)
+I (..\..\api\interrupt\inc\ipc_int.h)(0x4F44A9AA)
+I (..\M4\M4_rpc\master_interrupt_callback.h)(0x4F44A992)
+I (.\M0_rpc\slave_interrupt_callback.h)(0x4F44A994)
+F (.\M0_rpc\slave_interrupt_callback.c)(0x4F44A994)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork --split_sections -I ..\..\..\common -I ..\..\api\interrupt\inc -I ..\platform -I .\M0_rpc -I ..\M4\M4_rpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\NXP\LPC11xx-D__UVISION_VERSION="526" -DCORE_M0 -DIPC_SLAVE-o .\ram\slave_interrupt_callback.o --omf_browse .\ram\slave_interrupt_callback.crf --depend .\ram\slave_interrupt_callback.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F3DAE)
+I (..\..\..\common\type.h)(0x4F44A988)
+I (..\..\api\interrupt\inc\ipc_int.h)(0x4F44A9AA)
+I (..\platform\platform_config.h)(0x4F44A994)
+I (..\..\..\common\LPC43xx.h)(0x4F44A988)
+I (..\..\..\common\LPC43xx_M0.h)(0x4F44A988)
+I (..\..\..\common\core_cm0.h)(0x4F44A988)
+I (..\..\..\common\core_cmInstr.h)(0x4F44A988)
+I (..\..\..\common\core_cmFunc.h)(0x4F44A988)
+I (..\..\..\common\system_LPC43xx_M0.h)(0x4F44A988)
+I (..\..\..\common\system_LPC43xx.h)(0x4F44A988)
+I (..\..\..\common\scu.h)(0x4F44A988)
+I (..\M4\M4_rpc\master_interrupt_callback.h)(0x4F44A992)
+I (.\M0_rpc\slave_interrupt_callback.h)(0x4F44A994)
+I (M0_rpc\slave_interrupt_callback.h)(0x4F44A994)
+F (..\platform\platform_config.h)(0x4F44A994)()
+F (.\main.c)(0x4F44A994)(-c --cpu Cortex-M0 -D__MICROLIB --li -g -O2 --apcs=interwork --split_sections -I ..\..\..\common -I ..\..\api\interrupt\inc -I ..\platform -I .\M0_rpc -I ..\M4\M4_rpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\NXP\LPC11xx-D__UVISION_VERSION="526" -DCORE_M0 -DIPC_SLAVE-o .\ram\main.o --omf_browse .\ram\main.crf --depend .\ram\main.d)
+I (..\..\..\common\LPC43xx.h)(0x4F44A988)
+I (..\..\..\common\LPC43xx_M0.h)(0x4F44A988)
+I (..\..\..\common\core_cm0.h)(0x4F44A988)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F3DAE)
+I (..\..\..\common\core_cmInstr.h)(0x4F44A988)
+I (..\..\..\common\core_cmFunc.h)(0x4F44A988)
+I (..\..\..\common\system_LPC43xx_M0.h)(0x4F44A988)
+I (..\..\..\common\system_LPC43xx.h)(0x4F44A988)
+I (..\..\..\common\scu.h)(0x4F44A988)
+I (..\..\..\common\type.h)(0x4F44A988)
+I (..\..\api\interrupt\inc\ipc_int.h)(0x4F44A9AA)
+I (..\platform\platform_config.h)(0x4F44A994)
+I (..\M4\M4_rpc\master_interrupt_callback.h)(0x4F44A992)
+I (.\M0_rpc\slave_interrupt_callback.h)(0x4F44A994)
+I (..\platform\platform_check.h)(0x4F44A994)

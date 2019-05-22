@@ -1,11 +1,16 @@
 #include "chip.h"
 #include "board.h"
+#include "app_multicore_cfg.h"
+#include "ipc_example.h"
+#include "ipc_msg.h"
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <math.h>
 
-#define CPU_USAGE 50
+#define DEBUG 1
+
 #define TICKRATE_HZ 1000
 
 #define LPC_UART LPC_USART0
@@ -13,10 +18,6 @@
 #define UARTx_IRQHandler UART0_IRQHandler
 #define _GPDMA_CONN_UART_Tx GPDMA_CONN_UART0_Tx
 #define _GPDMA_CONN_UART_Rx GPDMA_CONN_UART0_Rx
-
-#define SHARED_MUTEX 0x10088000
-#define IPC_IRQ_Priority    7
-#define IPC_IRQn       M4_IRQn
 
 static uint8_t dmaChannelNumTx, dmaChannelNumRx;
 static volatile uint32_t channelTC;	/* Terminal Counter flag for Channel */
@@ -32,15 +33,13 @@ static int is_prime = 0;
 static uint32_t prime_test_3 = 101;
 static uint32_t prime_test_4 = 1009;
 static uint32_t prime_test_5 = 10007; //Using about 80%
-static uint32_t prime_test_6 = 100003;
+static uint32_t prime_test_6 = 100003; //Using about 99%
 static uint32_t prime_test_7 = 1000003;
 
 static volatile uint32_t tick_ct = 0;
-static volatile uint8_t mutex = (uint8_t) SHARED_MUTEX;
-#define LOCKED 1
-#define UNLOCKED 0
 
 void idle(void);
+int check_prime(uint32_t);
 
 void DMA_IRQHandler(void)
 {
@@ -61,7 +60,24 @@ void DMA_IRQHandler(void)
 
 void M4_IRQHandler(void)
 {
-	LPC_CREG->M4TXEVENT = 0;
+	uint32_t result;
+	
+	ipcex_msg_t msg, msg_out;
+	Chip_CREG_ClearM4Event();
+	
+	if (IPC_tryPopMsg(&msg) != QUEUE_VALID) {
+		return;
+	}
+	
+	result = check_prime(msg.data0);
+	
+	msg_out.id.pid = msg.id.pid;
+	msg_out.id.cpu = (uint16_t) CPUID_M4;
+	msg_out.data0 = result;
+	msg_out.data1 = msg.data1;
+	
+	IPC_tryPushMsg(msg_out.id.cpu, &msg_out);
+	
 }
 
 void TIMER3_IRQHandler(void)
@@ -72,57 +88,18 @@ void TIMER3_IRQHandler(void)
 	}
 }
 
-void lock_mutex(void) {
-	while (mutex == LOCKED) {
-		Board_LED_Set(0, 1);
-		__WFE();
-	}
-	
-	mutex = LOCKED;
-	
-	__DSB();
-	__DMB();
-}
-
-void unlock_mutex(void) {
-	__DMB();
-	
-	mutex = UNLOCKED;
-	
-	__DSB();
-	__SEV();
-}
-
 static void debug(char *msg, ...)
 {
 	char buff[80];
 	
-	va_list args;
-	va_start(args, msg);
-	vsprintf(buff, msg, args);
+	if (DEBUG) {
 	
-	lock_mutex();
-	
-	Chip_GPDMA_Init(LPC_GPDMA);
-	/* Setting GPDMA interrupt */
-	NVIC_DisableIRQ(DMA_IRQn);
-	NVIC_SetPriority(DMA_IRQn, ((0x01 << 3) | 0x01));
-	NVIC_EnableIRQ(DMA_IRQn);
-	
-	dmaChannelNumTx = Chip_GPDMA_GetFreeChannel(LPC_GPDMA, _GPDMA_CONN_UART_Tx);
-
-	isDMATx = ENABLE;
-	channelTC = channelTCErr = 0;
-	Chip_GPDMA_Transfer(LPC_GPDMA, dmaChannelNumTx,
-					  (uint32_t) buff,
-					  _GPDMA_CONN_UART_Tx,
-					  GPDMA_TRANSFERTYPE_M2P_CONTROLLER_DMA,
-					  strlen(buff));
-	while (!channelTC) {}
+		va_list args;
+		va_start(args, msg);
+		vsprintf(buff, msg, args);
 		
-	Chip_GPDMA_DeInit(LPC_GPDMA);
-	
-	unlock_mutex();
+		Chip_UART_SendBlocking(LPC_UART, buff, strlen(buff));
+	}
 
 }
 
@@ -137,16 +114,16 @@ int check_prime(uint32_t a)
    return 1;
 }
 
-int main(void)
-{
+int main(void) {
 	uint32_t timerFreq;
 	
 	SystemCoreClockUpdate();
 	
-	NVIC_SetPriority(IPC_IRQn, IPC_IRQ_Priority);
-	NVIC_EnableIRQ(IPC_IRQn);
-	
 	debug("M0: M0APP Core BOOT successful!\r\n");
+	
+	IPCEX_Init();
+	
+	NVIC_EnableIRQ(M4_IRQn);
 	
 	/* Enable timer 2 clock and reset it */
 	Chip_TIMER_Init(LPC_TIMER2);
@@ -177,7 +154,7 @@ int main(void)
 	NVIC_ClearPendingIRQ(TIMER3_IRQn);
 	
 	while(1) {
-		is_prime = check_prime(prime_test_6);
+		is_prime = check_prime(prime_test_4);
 		
 		idle();
 	}
@@ -198,7 +175,7 @@ void idle(void) {
 	if ((tick_ct - LastTime) >= 1000) {
 		LastTime = tick_ct;
 		
-		debug("M0:: Prime: %u; W: %u; S: %u; L: %5.2f\r\n", prime_test_6, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(SleepingTime + WorkingTime) * 100));
+		debug("M0:: Prime: %u; W: %u; S: %u; L: %5.2f\r\n", prime_test_4, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(SleepingTime + WorkingTime) * 100));
 		
 		SleepingTime = 0;
 		WorkingTime = 0;

@@ -1,5 +1,4 @@
-.\objects\m0_img_ldr.o: m0_img_ldr.c
-.\objects\m0_img_ldr.o: m0_img_ldr.h
+.\objects\m0_img_ldr.o: ..\multicore_common\m0_img_ldr.c
 .\objects\m0_img_ldr.o: ..\lpc_core\lpc_board\boards_43xx\nxp_lpcxpresso_4337\board.h
 .\objects\m0_img_ldr.o: ..\lpc_core\lpc_chip\chip_18xx_43xx\chip.h
 .\objects\m0_img_ldr.o: ..\lpc_core\lpc_chip\chip_18xx_43xx\config_43xx\sys_config.h
@@ -66,4 +65,4 @@
 .\objects\m0_img_ldr.o: ..\lpc_core\lpc_chip\chip_common\fpu_init.h
 .\objects\m0_img_ldr.o: ..\lpc_core\lpc_board\board_common\board_api.h
 .\objects\m0_img_ldr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\m0_img_ldr.o: app_multicore_cfg.h
+.\objects\m0_img_ldr.o: ..\m4\app_multicore_cfg.h

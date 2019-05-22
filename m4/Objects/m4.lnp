@@ -3,6 +3,8 @@
 ".\objects\keil_startup_lpc18xx43xx.o"
 ".\objects\sysinit.o"
 ".\objects\m0_img_ldr.o"
+".\objects\ipc_msg.o"
+".\objects\ipc_example.o"
 "..\lpc_core\lpc_board\boards_43xx\nxp_lpcxpresso_4337\keil_output\core_m4\lib_lpc_board_nxp_lpcxpresso_4337.lib"
 "..\lpc_core\lpc_chip\chip_18xx_43xx\keil_output\core_m4\lib_lpc_chip_43xx.lib"
 --strict --scatter ".\Objects\m4.sct"

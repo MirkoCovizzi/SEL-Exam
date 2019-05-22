@@ -29,7 +29,8 @@
  * this code.
  */
 
-#include "m0_img_ldr.h"
+#include "board.h"
+#include "app_multicore_cfg.h"
 
 /*****************************************************************************
  * Private types/enumerations/variables
@@ -78,3 +79,10 @@ int M0Image_Boot(CPUID_T cpuid, uint32_t m0_image_addr)
 
 	return 0;
 }
+
+
+
+
+
+
+

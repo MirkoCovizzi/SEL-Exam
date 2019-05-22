@@ -1,0 +1,12 @@
+.\ram\scu.o: ..\..\..\common\scu.c
+.\ram\scu.o: ..\..\..\common\LPC43xx_M0.h
+.\ram\scu.o: ..\..\..\common\LPC43xx.h
+.\ram\scu.o: ..\..\..\common\LPC43xx_M0.h
+.\ram\scu.o: ..\..\..\common\core_cm0.h
+.\ram\scu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\ram\scu.o: ..\..\..\common\core_cmInstr.h
+.\ram\scu.o: ..\..\..\common\core_cmFunc.h
+.\ram\scu.o: ..\..\..\common\system_LPC43xx_M0.h
+.\ram\scu.o: ..\..\..\common\system_LPC43xx.h
+.\ram\scu.o: ..\..\..\common\scu.h
+.\ram\scu.o: ..\..\..\common\type.h

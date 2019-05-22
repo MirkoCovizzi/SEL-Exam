@@ -1,0 +1,9 @@
+.\objects\platform_config.o: platform_config.c
+.\objects\platform_config.o: C:\Keil_v5\ARM\PACK\Keil\LPC4300_DFP\2.8.0\Device\Include\LPC43xx.h
+.\objects\platform_config.o: ..\CMSIS\CMSIS\Include\core_cm4.h
+.\objects\platform_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\platform_config.o: ..\CMSIS\CMSIS\Include\core_cmInstr.h
+.\objects\platform_config.o: ..\CMSIS\CMSIS\Include\core_cmFunc.h
+.\objects\platform_config.o: ..\CMSIS\CMSIS\Include\core_cm4_simd.h
+.\objects\platform_config.o: C:\Keil_v5\ARM\PACK\Keil\LPC4300_DFP\2.8.0\Device\Include\system_LPC43xx.h
+.\objects\platform_config.o: platform_config.h
