@@ -1,0 +1,24 @@
+IPC demo program based on message queue
+-----------------------------------------
+
+- within the file platform_config.h the user needs to specify the system configuration. 
+
+
+The user can specifiy:
+
+
+* the size of the message and command buffers
+
+* the priority of the interrupt associated with the IPC communication
+
+* the memory locations of the M0 code/data, location of the IPC queues
+	
+
+
+The linker scatter file needs to be consistent with the provided ROM/RAM addresses in case of changes. 
+
+
+- the application runs completely from RAM and exchanges messages between the processors, showing how to post and read from the queue.
+
+
+- for the RTOS configuration, refer to freeRTOSConfig.h

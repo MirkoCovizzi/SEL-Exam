@@ -1,0 +1,54 @@
+; memory map assignment
+; check with platform_config.h header
+; check the ranges
+; #define M4_ROM_START	0x1C000000
+; #define M4_ROM_LEN	0x400000	/* 4 Mbytes */
+LR_IROM1 0x1C000000 0x400000  {    ; load region size_region
+
+  ER_IROM1 0x1C000000 0x400000  {  ; load address = execution address
+   *.o (RESET, +First)
+   *(InRoot$$Sections)
+   .ANY (+RO)
+   ipc_queue.o (.constdata)
+  }
+
+; #define M4_RAM_START	0x10000000	/* 96 Kbytes */
+; #define M4_RAM_LEN		0x18000  
+  ; this region includes just the relocated vector table
+  ; not used by anything else
+  ER_RELOCIRQ 0x10000000 0xC0 {
+    ; reserved for the relocated irq vector table
+    reloc_irq_table.o (ram_isr_table, +First )
+  }
+  
+  RW_IRAM1 +0 (0x18000 - 0xC0) {  ; RW data
+
+   scu.o (+RO)			; special functions which need to run from SRAM
+   emc_LPC43xx.o (+RO)
+   ipc_queue.o (+RO)
+   platform_config.o(+RO)
+   .ANY (+RW +ZI)
+  }
+  
+; #define M4_BUF_START	0x20000000
+; #define M4_BUF_LEN		0x4000
+  RW_IRAM_BUFFERS 0x20000000 0x4000 { ; rw buffers
+  }
+
+  ; #define HOST_CMD_BLOCK_START	0x20008000
+  RW_IRAM_HOST_CMD 0x20008000 0x2000  {
+   ipc_cmd_buffer.o (cmdBuffer_section +First)
+  }
+
+  ;#define HOST_MSG_BLOCK_START	0x2000A000
+  RW_IRAM_HOST_MSG 0x2000A000 0x2000  {
+   ipc_msg_buffer.o (msgBuffer_section +First) 	  
+  }
+
+  
+}
+
+
+
+
+

@@ -6,7 +6,7 @@
 #include <stdarg.h>
 #include <math.h>
 
-#define CPU_USAGE 50
+#define CPU_USAGE 95
 #define TICKRATE_HZ 1000
 
 #define LPC_UART LPC_USART0
@@ -72,6 +72,7 @@ void lock_mutex(void) {
 	
 	mutex = LOCKED;
 	
+	__DSB();
 	__DMB();
 }
 

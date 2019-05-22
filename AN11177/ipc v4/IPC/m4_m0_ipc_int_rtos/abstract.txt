@@ -1,0 +1,31 @@
+IPC demo program based on simple interrupts
+-----------------------------------------
+
+- within the file platform_config.h the user needs to specify the system configuration. 
+
+
+The user can specifiy:
+
+* the priority of the interrupt associated with the IPC communication
+
+* the memory locations of the M0 code/data
+	
+
+The linker scatter file needs to be consistent with the provided ROM/RAM addresses in case of changes. 
+
+
+For application processing, a message pending flag is provided
+
+
+- the application runs completely from RAM and exchanges interrupts between the processors
+
+
+- the user has to provide a callback function for the IPC interrupt service routine for each core
+
+
+- since the callback is executed within the ISR, the usage is meant for quick operations that need to be performed in reaction to the interrupt event
+
+For later application processing, a message pending flag is provided and shall rather be used, to avoid increasing unnecessarily interrupt latency
+
+
+- for the RTOS configuration, refer to freeRTOSConfig.h 

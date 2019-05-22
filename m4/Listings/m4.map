@@ -1191,70 +1191,70 @@ Image Symbol Table
     i.fpuInit                                0x1a002e74   Section        0  fpu_init.o(i.fpuInit)
     i.idle                                   0x1a002eb0   Section        0  main.o(i.idle)
     i.lock_mutex                             0x1a003024   Section        0  main.o(i.lock_mutex)
-    i.main                                   0x1a003040   Section        0  main.o(i.main)
-    i.makeCtrlWord                           0x1a0031a8   Section        0  gpdma_18xx_43xx.o(i.makeCtrlWord)
-    i.pll_calc_divs                          0x1a003238   Section        0  clock_18xx_43xx.o(i.pll_calc_divs)
-    pll_calc_divs                            0x1a003239   Thumb Code   152  clock_18xx_43xx.o(i.pll_calc_divs)
-    i.pll_get_frac                           0x1a0032d8   Section        0  clock_18xx_43xx.o(i.pll_get_frac)
-    pll_get_frac                             0x1a0032d9   Thumb Code   184  clock_18xx_43xx.o(i.pll_get_frac)
-    i.setupChannel                           0x1a003394   Section        0  gpdma_18xx_43xx.o(i.setupChannel)
-    i.unlock_mutex                           0x1a0033fc   Section        0  main.o(i.unlock_mutex)
-    locale$$code                             0x1a003414   Section       44  lc_numeric_c.o(locale$$code)
-    locale$$code                             0x1a003440   Section       44  lc_ctype_c.o(locale$$code)
-    x$fpl$dretinf                            0x1a00346c   Section       12  dretinf.o(x$fpl$dretinf)
-    $v0                                      0x1a00346c   Number         0  dretinf.o(x$fpl$dretinf)
-    x$fpl$f2d                                0x1a003478   Section       86  f2d.o(x$fpl$f2d)
-    $v0                                      0x1a003478   Number         0  f2d.o(x$fpl$f2d)
-    x$fpl$fnaninf                            0x1a0034ce   Section      140  fnaninf.o(x$fpl$fnaninf)
-    $v0                                      0x1a0034ce   Number         0  fnaninf.o(x$fpl$fnaninf)
-    x$fpl$fpinit                             0x1a00355a   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x1a00355a   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$printf1                            0x1a003564   Section        4  printf1.o(x$fpl$printf1)
-    $v0                                      0x1a003564   Number         0  printf1.o(x$fpl$printf1)
-    .constdata                               0x1a003568   Section        4  board.o(.constdata)
-    x$fpl$usenofp                            0x1a003568   Section        0  usenofp.o(x$fpl$usenofp)
+    i.main                                   0x1a003044   Section        0  main.o(i.main)
+    i.makeCtrlWord                           0x1a0031ac   Section        0  gpdma_18xx_43xx.o(i.makeCtrlWord)
+    i.pll_calc_divs                          0x1a00323c   Section        0  clock_18xx_43xx.o(i.pll_calc_divs)
+    pll_calc_divs                            0x1a00323d   Thumb Code   152  clock_18xx_43xx.o(i.pll_calc_divs)
+    i.pll_get_frac                           0x1a0032dc   Section        0  clock_18xx_43xx.o(i.pll_get_frac)
+    pll_get_frac                             0x1a0032dd   Thumb Code   184  clock_18xx_43xx.o(i.pll_get_frac)
+    i.setupChannel                           0x1a003398   Section        0  gpdma_18xx_43xx.o(i.setupChannel)
+    i.unlock_mutex                           0x1a003400   Section        0  main.o(i.unlock_mutex)
+    locale$$code                             0x1a003418   Section       44  lc_numeric_c.o(locale$$code)
+    locale$$code                             0x1a003444   Section       44  lc_ctype_c.o(locale$$code)
+    x$fpl$dretinf                            0x1a003470   Section       12  dretinf.o(x$fpl$dretinf)
+    $v0                                      0x1a003470   Number         0  dretinf.o(x$fpl$dretinf)
+    x$fpl$f2d                                0x1a00347c   Section       86  f2d.o(x$fpl$f2d)
+    $v0                                      0x1a00347c   Number         0  f2d.o(x$fpl$f2d)
+    x$fpl$fnaninf                            0x1a0034d2   Section      140  fnaninf.o(x$fpl$fnaninf)
+    $v0                                      0x1a0034d2   Number         0  fnaninf.o(x$fpl$fnaninf)
+    x$fpl$fpinit                             0x1a00355e   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x1a00355e   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$printf1                            0x1a003568   Section        4  printf1.o(x$fpl$printf1)
+    $v0                                      0x1a003568   Number         0  printf1.o(x$fpl$printf1)
     .constdata                               0x1a00356c   Section        4  board.o(.constdata)
-    .constdata                               0x1a003570   Section        6  board.o(.constdata)
-    gpioLEDBits                              0x1a003570   Data           6  board.o(.constdata)
-    .constdata                               0x1a003576   Section       64  board_sysinit.o(.constdata)
-    InitClkStates                            0x1a003576   Data          12  board_sysinit.o(.constdata)
-    pinmuxing                                0x1a003582   Data          52  board_sysinit.o(.constdata)
-    .constdata                               0x1a0035b6   Section      108  clock_18xx_43xx.o(.constdata)
-    periph_to_base                           0x1a0035b6   Data         108  clock_18xx_43xx.o(.constdata)
-    .constdata                               0x1a003622   Section       60  gpdma_18xx_43xx.o(.constdata)
-    GPDMA_LUTPerBurst                        0x1a003622   Data          30  gpdma_18xx_43xx.o(.constdata)
-    GPDMA_LUTPerWid                          0x1a003640   Data          30  gpdma_18xx_43xx.o(.constdata)
-    .constdata                               0x1a00365e   Section       16  uart_18xx_43xx.o(.constdata)
-    UART_PClock                              0x1a00365e   Data           8  uart_18xx_43xx.o(.constdata)
-    UART_BClock                              0x1a003666   Data           8  uart_18xx_43xx.o(.constdata)
-    .constdata                               0x1a00366e   Section       72  sysinit_18xx_43xx.o(.constdata)
-    InitClkStates                            0x1a00366e   Data          72  sysinit_18xx_43xx.o(.constdata)
-    .constdata                               0x1a0036b8   Section      320  powf.o(.constdata)
-    table                                    0x1a0036b8   Data         128  powf.o(.constdata)
-    powersof2to1over16top                    0x1a003738   Data          64  powf.o(.constdata)
-    powersof2to1over16bot                    0x1a003778   Data          64  powf.o(.constdata)
-    powersof2to1over16all                    0x1a0037b8   Data          64  powf.o(.constdata)
-    .constdata                               0x1a0037f8   Section        8  _printf_wctomb.o(.constdata)
-    initial_mbstate                          0x1a0037f8   Data           8  _printf_wctomb.o(.constdata)
-    .constdata                               0x1a003800   Section       40  _printf_hex_int_ll_ptr.o(.constdata)
-    uc_hextab                                0x1a003800   Data          20  _printf_hex_int_ll_ptr.o(.constdata)
-    lc_hextab                                0x1a003814   Data          20  _printf_hex_int_ll_ptr.o(.constdata)
-    .constdata                               0x1a003828   Section       17  __printf_flags_ss_wp.o(.constdata)
-    maptable                                 0x1a003828   Data          17  __printf_flags_ss_wp.o(.constdata)
-    .constdata                               0x1a00383c   Section      148  bigflt0.o(.constdata)
-    tenpwrs_x                                0x1a00383c   Data          60  bigflt0.o(.constdata)
-    tenpwrs_i                                0x1a003878   Data          64  bigflt0.o(.constdata)
-    locale$$data                             0x1a0038f0   Section       28  lc_numeric_c.o(locale$$data)
-    __lcnum_c_name                           0x1a0038f4   Data           2  lc_numeric_c.o(locale$$data)
-    __lcnum_c_start                          0x1a0038fc   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_point                          0x1a003908   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_thousands                      0x1a00390a   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_grouping                       0x1a00390b   Data           0  lc_numeric_c.o(locale$$data)
-    locale$$data                             0x1a00390c   Section      272  lc_ctype_c.o(locale$$data)
-    __lcnum_c_end                            0x1a00390c   Data           0  lc_numeric_c.o(locale$$data)
-    __lcctype_c_name                         0x1a003910   Data           2  lc_ctype_c.o(locale$$data)
-    __lcctype_c_start                        0x1a003918   Data           0  lc_ctype_c.o(locale$$data)
-    __lcctype_c_end                          0x1a003a1c   Data           0  lc_ctype_c.o(locale$$data)
+    x$fpl$usenofp                            0x1a00356c   Section        0  usenofp.o(x$fpl$usenofp)
+    .constdata                               0x1a003570   Section        4  board.o(.constdata)
+    .constdata                               0x1a003574   Section        6  board.o(.constdata)
+    gpioLEDBits                              0x1a003574   Data           6  board.o(.constdata)
+    .constdata                               0x1a00357a   Section       64  board_sysinit.o(.constdata)
+    InitClkStates                            0x1a00357a   Data          12  board_sysinit.o(.constdata)
+    pinmuxing                                0x1a003586   Data          52  board_sysinit.o(.constdata)
+    .constdata                               0x1a0035ba   Section      108  clock_18xx_43xx.o(.constdata)
+    periph_to_base                           0x1a0035ba   Data         108  clock_18xx_43xx.o(.constdata)
+    .constdata                               0x1a003626   Section       60  gpdma_18xx_43xx.o(.constdata)
+    GPDMA_LUTPerBurst                        0x1a003626   Data          30  gpdma_18xx_43xx.o(.constdata)
+    GPDMA_LUTPerWid                          0x1a003644   Data          30  gpdma_18xx_43xx.o(.constdata)
+    .constdata                               0x1a003662   Section       16  uart_18xx_43xx.o(.constdata)
+    UART_PClock                              0x1a003662   Data           8  uart_18xx_43xx.o(.constdata)
+    UART_BClock                              0x1a00366a   Data           8  uart_18xx_43xx.o(.constdata)
+    .constdata                               0x1a003672   Section       72  sysinit_18xx_43xx.o(.constdata)
+    InitClkStates                            0x1a003672   Data          72  sysinit_18xx_43xx.o(.constdata)
+    .constdata                               0x1a0036bc   Section      320  powf.o(.constdata)
+    table                                    0x1a0036bc   Data         128  powf.o(.constdata)
+    powersof2to1over16top                    0x1a00373c   Data          64  powf.o(.constdata)
+    powersof2to1over16bot                    0x1a00377c   Data          64  powf.o(.constdata)
+    powersof2to1over16all                    0x1a0037bc   Data          64  powf.o(.constdata)
+    .constdata                               0x1a0037fc   Section        8  _printf_wctomb.o(.constdata)
+    initial_mbstate                          0x1a0037fc   Data           8  _printf_wctomb.o(.constdata)
+    .constdata                               0x1a003804   Section       40  _printf_hex_int_ll_ptr.o(.constdata)
+    uc_hextab                                0x1a003804   Data          20  _printf_hex_int_ll_ptr.o(.constdata)
+    lc_hextab                                0x1a003818   Data          20  _printf_hex_int_ll_ptr.o(.constdata)
+    .constdata                               0x1a00382c   Section       17  __printf_flags_ss_wp.o(.constdata)
+    maptable                                 0x1a00382c   Data          17  __printf_flags_ss_wp.o(.constdata)
+    .constdata                               0x1a003840   Section      148  bigflt0.o(.constdata)
+    tenpwrs_x                                0x1a003840   Data          60  bigflt0.o(.constdata)
+    tenpwrs_i                                0x1a00387c   Data          64  bigflt0.o(.constdata)
+    locale$$data                             0x1a0038f4   Section       28  lc_numeric_c.o(locale$$data)
+    __lcnum_c_name                           0x1a0038f8   Data           2  lc_numeric_c.o(locale$$data)
+    __lcnum_c_start                          0x1a003900   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_point                          0x1a00390c   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_thousands                      0x1a00390e   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_grouping                       0x1a00390f   Data           0  lc_numeric_c.o(locale$$data)
+    locale$$data                             0x1a003910   Section      272  lc_ctype_c.o(locale$$data)
+    __lcnum_c_end                            0x1a003910   Data           0  lc_numeric_c.o(locale$$data)
+    __lcctype_c_name                         0x1a003914   Data           2  lc_ctype_c.o(locale$$data)
+    __lcctype_c_start                        0x1a00391c   Data           0  lc_ctype_c.o(locale$$data)
+    __lcctype_c_end                          0x1a003a20   Data           0  lc_ctype_c.o(locale$$data)
 
     Global Symbols
 
@@ -1554,27 +1554,27 @@ Image Symbol Table
     calc_pi                                  0x1a002c77   Thumb Code   116  main.o(i.calc_pi)
     fpuInit                                  0x1a002e75   Thumb Code    46  fpu_init.o(i.fpuInit)
     idle                                     0x1a002eb1   Thumb Code   272  main.o(i.idle)
-    lock_mutex                               0x1a003025   Thumb Code    24  main.o(i.lock_mutex)
-    main                                     0x1a003041   Thumb Code   258  main.o(i.main)
-    makeCtrlWord                             0x1a0031a9   Thumb Code   140  gpdma_18xx_43xx.o(i.makeCtrlWord)
-    setupChannel                             0x1a003395   Thumb Code   104  gpdma_18xx_43xx.o(i.setupChannel)
-    unlock_mutex                             0x1a0033fd   Thumb Code    18  main.o(i.unlock_mutex)
-    _get_lc_numeric                          0x1a003415   Thumb Code    44  lc_numeric_c.o(locale$$code)
-    _get_lc_ctype                            0x1a003441   Thumb Code    44  lc_ctype_c.o(locale$$code)
-    __fpl_dretinf                            0x1a00346d   Thumb Code    12  dretinf.o(x$fpl$dretinf)
-    __aeabi_f2d                              0x1a003479   Thumb Code     0  f2d.o(x$fpl$f2d)
-    _f2d                                     0x1a003479   Thumb Code    86  f2d.o(x$fpl$f2d)
-    __fpl_fnaninf                            0x1a0034cf   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
-    _fp_init                                 0x1a00355b   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x1a003563   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x1a003563   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    _printf_fp_dec                           0x1a003565   Thumb Code     4  printf1.o(x$fpl$printf1)
-    ExtRateIn                                0x1a003568   Data           4  board.o(.constdata)
-    __I$use$fp                               0x1a003568   Number         0  usenofp.o(x$fpl$usenofp)
-    OscRateIn                                0x1a00356c   Data           4  board.o(.constdata)
-    Region$$Table$$Base                      0x1a0038d0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x1a0038f0   Number         0  anon$$obj.o(Region$$Table)
-    __ctype                                  0x1a003919   Data           0  lc_ctype_c.o(locale$$data)
+    lock_mutex                               0x1a003025   Thumb Code    28  main.o(i.lock_mutex)
+    main                                     0x1a003045   Thumb Code   258  main.o(i.main)
+    makeCtrlWord                             0x1a0031ad   Thumb Code   140  gpdma_18xx_43xx.o(i.makeCtrlWord)
+    setupChannel                             0x1a003399   Thumb Code   104  gpdma_18xx_43xx.o(i.setupChannel)
+    unlock_mutex                             0x1a003401   Thumb Code    18  main.o(i.unlock_mutex)
+    _get_lc_numeric                          0x1a003419   Thumb Code    44  lc_numeric_c.o(locale$$code)
+    _get_lc_ctype                            0x1a003445   Thumb Code    44  lc_ctype_c.o(locale$$code)
+    __fpl_dretinf                            0x1a003471   Thumb Code    12  dretinf.o(x$fpl$dretinf)
+    __aeabi_f2d                              0x1a00347d   Thumb Code     0  f2d.o(x$fpl$f2d)
+    _f2d                                     0x1a00347d   Thumb Code    86  f2d.o(x$fpl$f2d)
+    __fpl_fnaninf                            0x1a0034d3   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
+    _fp_init                                 0x1a00355f   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x1a003567   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x1a003567   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    _printf_fp_dec                           0x1a003569   Thumb Code     4  printf1.o(x$fpl$printf1)
+    ExtRateIn                                0x1a00356c   Data           4  board.o(.constdata)
+    __I$use$fp                               0x1a00356c   Number         0  usenofp.o(x$fpl$usenofp)
+    OscRateIn                                0x1a003570   Data           4  board.o(.constdata)
+    Region$$Table$$Base                      0x1a0038d4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x1a0038f4   Number         0  anon$$obj.o(Region$$Table)
+    __ctype                                  0x1a00391d   Data           0  lc_ctype_c.o(locale$$data)
 
 
 
@@ -1584,24 +1584,24 @@ Memory Map of the image
 
   Image Entry point : 0x1a000115
 
-  Load Region LR_IROM1 (Base: 0x1a000000, Size: 0x00003ad8, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x1a000000, Size: 0x00003adc, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region RW_IRAM1 (Exec base: 0x10000000, Load base: 0x1a003a1c, Size: 0x00000420, Max: 0x00008000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x10000000, Load base: 0x1a003a20, Size: 0x00000420, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x10000000   0x1a003a1c   0x0000002d   Data   RW           15    .data               main.o
-    0x1000002d   0x1a003a49   0x00000003   PAD
-    0x10000030   0x1a003a4c   0x00000004   Data   RW          843    .data               lib_lpc_chip_43xx.lib(chip_18xx_43xx.o)
-    0x10000034   0x1a003a50   0x00000008   Data   RW         1099    .data               lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
-    0x1000003c   0x1a003a58   0x00000080   Data   RW         1303    .data               lib_lpc_chip_43xx.lib(gpdma_18xx_43xx.o)
+    0x10000000   0x1a003a20   0x0000002d   Data   RW           15    .data               main.o
+    0x1000002d   0x1a003a4d   0x00000003   PAD
+    0x10000030   0x1a003a50   0x00000004   Data   RW          843    .data               lib_lpc_chip_43xx.lib(chip_18xx_43xx.o)
+    0x10000034   0x1a003a54   0x00000008   Data   RW         1099    .data               lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
+    0x1000003c   0x1a003a5c   0x00000080   Data   RW         1303    .data               lib_lpc_chip_43xx.lib(gpdma_18xx_43xx.o)
     0x100000bc        -       0x00000060   Zero   RW         2247    .bss                c_w.l(libspace.o)
-    0x1000011c   0x1a003ad8   0x00000004   PAD
+    0x1000011c   0x1a003adc   0x00000004   PAD
     0x10000120        -       0x00000000   Zero   RW          309    HEAP                keil_startup_lpc18xx43xx.o
     0x10000120        -       0x00000300   Zero   RW          308    STACK               keil_startup_lpc18xx43xx.o
 
 
-    Execution Region ER_IROM1 (Exec base: 0x1a000000, Load base: 0x1a000000, Size: 0x00003a1c, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x1a000000, Load base: 0x1a000000, Size: 0x00003a20, Max: 0x00080000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1803,39 +1803,39 @@ Memory Map of the image
     0x1a002dcc   0x1a002dcc   0x000000a8   Code   RO           10    i.debug             main.o
     0x1a002e74   0x1a002e74   0x0000003c   Code   RO         1562    i.fpuInit           lib_lpc_chip_43xx.lib(fpu_init.o)
     0x1a002eb0   0x1a002eb0   0x00000174   Code   RO           11    i.idle              main.o
-    0x1a003024   0x1a003024   0x0000001c   Code   RO           12    i.lock_mutex        main.o
-    0x1a003040   0x1a003040   0x00000168   Code   RO           13    i.main              main.o
-    0x1a0031a8   0x1a0031a8   0x00000090   Code   RO         1300    i.makeCtrlWord      lib_lpc_chip_43xx.lib(gpdma_18xx_43xx.o)
-    0x1a003238   0x1a003238   0x000000a0   Code   RO         1096    i.pll_calc_divs     lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
-    0x1a0032d8   0x1a0032d8   0x000000bc   Code   RO         1097    i.pll_get_frac      lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
-    0x1a003394   0x1a003394   0x00000068   Code   RO         1301    i.setupChannel      lib_lpc_chip_43xx.lib(gpdma_18xx_43xx.o)
-    0x1a0033fc   0x1a0033fc   0x00000018   Code   RO           14    i.unlock_mutex      main.o
-    0x1a003414   0x1a003414   0x0000002c   Code   RO         2286    locale$$code        c_w.l(lc_numeric_c.o)
-    0x1a003440   0x1a003440   0x0000002c   Code   RO         2307    locale$$code        c_w.l(lc_ctype_c.o)
-    0x1a00346c   0x1a00346c   0x0000000c   Code   RO         2184    x$fpl$dretinf       fz_wm.l(dretinf.o)
-    0x1a003478   0x1a003478   0x00000056   Code   RO         2070    x$fpl$f2d           fz_wm.l(f2d.o)
-    0x1a0034ce   0x1a0034ce   0x0000008c   Code   RO         2186    x$fpl$fnaninf       fz_wm.l(fnaninf.o)
-    0x1a00355a   0x1a00355a   0x0000000a   Code   RO         2373    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x1a003564   0x1a003564   0x00000004   Code   RO         2190    x$fpl$printf1       fz_wm.l(printf1.o)
-    0x1a003568   0x1a003568   0x00000000   Code   RO         2192    x$fpl$usenofp       fz_wm.l(usenofp.o)
-    0x1a003568   0x1a003568   0x00000004   Data   RO          419    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
-    0x1a00356c   0x1a00356c   0x00000004   Data   RO          420    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
-    0x1a003570   0x1a003570   0x00000006   Data   RO          421    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
-    0x1a003576   0x1a003576   0x00000040   Data   RO          785    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board_sysinit.o)
-    0x1a0035b6   0x1a0035b6   0x0000006c   Data   RO         1098    .constdata          lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
-    0x1a003622   0x1a003622   0x0000003c   Data   RO         1302    .constdata          lib_lpc_chip_43xx.lib(gpdma_18xx_43xx.o)
-    0x1a00365e   0x1a00365e   0x00000010   Data   RO         1453    .constdata          lib_lpc_chip_43xx.lib(uart_18xx_43xx.o)
-    0x1a00366e   0x1a00366e   0x00000048   Data   RO         1799    .constdata          lib_lpc_chip_43xx.lib(sysinit_18xx_43xx.o)
-    0x1a0036b6   0x1a0036b6   0x00000002   PAD
-    0x1a0036b8   0x1a0036b8   0x00000140   Data   RO         2075    .constdata          m_wm.l(powf.o)
-    0x1a0037f8   0x1a0037f8   0x00000008   Data   RO         2110    .constdata          c_w.l(_printf_wctomb.o)
-    0x1a003800   0x1a003800   0x00000028   Data   RO         2139    .constdata          c_w.l(_printf_hex_int_ll_ptr.o)
-    0x1a003828   0x1a003828   0x00000011   Data   RO         2159    .constdata          c_w.l(__printf_flags_ss_wp.o)
-    0x1a003839   0x1a003839   0x00000003   PAD
-    0x1a00383c   0x1a00383c   0x00000094   Data   RO         2261    .constdata          c_w.l(bigflt0.o)
-    0x1a0038d0   0x1a0038d0   0x00000020   Data   RO         2429    Region$$Table       anon$$obj.o
-    0x1a0038f0   0x1a0038f0   0x0000001c   Data   RO         2285    locale$$data        c_w.l(lc_numeric_c.o)
-    0x1a00390c   0x1a00390c   0x00000110   Data   RO         2306    locale$$data        c_w.l(lc_ctype_c.o)
+    0x1a003024   0x1a003024   0x00000020   Code   RO           12    i.lock_mutex        main.o
+    0x1a003044   0x1a003044   0x00000168   Code   RO           13    i.main              main.o
+    0x1a0031ac   0x1a0031ac   0x00000090   Code   RO         1300    i.makeCtrlWord      lib_lpc_chip_43xx.lib(gpdma_18xx_43xx.o)
+    0x1a00323c   0x1a00323c   0x000000a0   Code   RO         1096    i.pll_calc_divs     lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
+    0x1a0032dc   0x1a0032dc   0x000000bc   Code   RO         1097    i.pll_get_frac      lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
+    0x1a003398   0x1a003398   0x00000068   Code   RO         1301    i.setupChannel      lib_lpc_chip_43xx.lib(gpdma_18xx_43xx.o)
+    0x1a003400   0x1a003400   0x00000018   Code   RO           14    i.unlock_mutex      main.o
+    0x1a003418   0x1a003418   0x0000002c   Code   RO         2286    locale$$code        c_w.l(lc_numeric_c.o)
+    0x1a003444   0x1a003444   0x0000002c   Code   RO         2307    locale$$code        c_w.l(lc_ctype_c.o)
+    0x1a003470   0x1a003470   0x0000000c   Code   RO         2184    x$fpl$dretinf       fz_wm.l(dretinf.o)
+    0x1a00347c   0x1a00347c   0x00000056   Code   RO         2070    x$fpl$f2d           fz_wm.l(f2d.o)
+    0x1a0034d2   0x1a0034d2   0x0000008c   Code   RO         2186    x$fpl$fnaninf       fz_wm.l(fnaninf.o)
+    0x1a00355e   0x1a00355e   0x0000000a   Code   RO         2373    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x1a003568   0x1a003568   0x00000004   Code   RO         2190    x$fpl$printf1       fz_wm.l(printf1.o)
+    0x1a00356c   0x1a00356c   0x00000000   Code   RO         2192    x$fpl$usenofp       fz_wm.l(usenofp.o)
+    0x1a00356c   0x1a00356c   0x00000004   Data   RO          419    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
+    0x1a003570   0x1a003570   0x00000004   Data   RO          420    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
+    0x1a003574   0x1a003574   0x00000006   Data   RO          421    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
+    0x1a00357a   0x1a00357a   0x00000040   Data   RO          785    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board_sysinit.o)
+    0x1a0035ba   0x1a0035ba   0x0000006c   Data   RO         1098    .constdata          lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
+    0x1a003626   0x1a003626   0x0000003c   Data   RO         1302    .constdata          lib_lpc_chip_43xx.lib(gpdma_18xx_43xx.o)
+    0x1a003662   0x1a003662   0x00000010   Data   RO         1453    .constdata          lib_lpc_chip_43xx.lib(uart_18xx_43xx.o)
+    0x1a003672   0x1a003672   0x00000048   Data   RO         1799    .constdata          lib_lpc_chip_43xx.lib(sysinit_18xx_43xx.o)
+    0x1a0036ba   0x1a0036ba   0x00000002   PAD
+    0x1a0036bc   0x1a0036bc   0x00000140   Data   RO         2075    .constdata          m_wm.l(powf.o)
+    0x1a0037fc   0x1a0037fc   0x00000008   Data   RO         2110    .constdata          c_w.l(_printf_wctomb.o)
+    0x1a003804   0x1a003804   0x00000028   Data   RO         2139    .constdata          c_w.l(_printf_hex_int_ll_ptr.o)
+    0x1a00382c   0x1a00382c   0x00000011   Data   RO         2159    .constdata          c_w.l(__printf_flags_ss_wp.o)
+    0x1a00383d   0x1a00383d   0x00000003   PAD
+    0x1a003840   0x1a003840   0x00000094   Data   RO         2261    .constdata          c_w.l(bigflt0.o)
+    0x1a0038d4   0x1a0038d4   0x00000020   Data   RO         2429    Region$$Table       anon$$obj.o
+    0x1a0038f4   0x1a0038f4   0x0000001c   Data   RO         2285    locale$$data        c_w.l(lc_numeric_c.o)
+    0x1a003910   0x1a003910   0x00000110   Data   RO         2306    locale$$data        c_w.l(lc_ctype_c.o)
 
 
 ==============================================================================
@@ -1845,13 +1845,13 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-        64         24        276          0        768        892   keil_startup_lpc18xx43xx.o
-       156         14          0          0          0       4951   m0_img_ldr.o
-      1244        280          0         45          0      52873   main.o
-        28         10          0          0          0        509   sysinit.o
+        64         24        276          0        768        924   keil_startup_lpc18xx43xx.o
+       156         14          0          0          0       5111   m0_img_ldr.o
+      1248        280          0         45          0      53549   main.o
+        28         10          0          0          0        541   sysinit.o
 
     ----------------------------------------------------------------------
-      1496        328        308         48        768      59225   Object Totals
+      1500        328        308         48        768      60125   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          4          0          0          3          0          0   (incl. Padding)
 
@@ -1979,15 +1979,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     13396       1086       1480        188        868     149167   Grand Totals
-     13396       1086       1480        188        868     149167   ELF Image Totals
-     13396       1086       1480        188          0          0   ROM Totals
+     13400       1086       1480        188        868     150067   Grand Totals
+     13400       1086       1480        188        868     150067   ELF Image Totals
+     13400       1086       1480        188          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                14876 (  14.53kB)
+    Total RO  Size (Code + RO Data)                14880 (  14.53kB)
     Total RW  Size (RW Data + ZI Data)              1056 (   1.03kB)
-    Total ROM Size (Code + RO Data + RW Data)      15064 (  14.71kB)
+    Total ROM Size (Code + RO Data + RW Data)      15068 (  14.71kB)
 
 ==============================================================================
 

@@ -32,6 +32,7 @@ static int is_prime = 0;
 static uint32_t prime_test_3 = 101;
 static uint32_t prime_test_4 = 1009;
 static uint32_t prime_test_5 = 10007; //Using about 80%
+static uint32_t prime_test_6 = 100003;
 static uint32_t prime_test_7 = 1000003;
 
 static volatile uint32_t tick_ct = 0;
@@ -73,11 +74,13 @@ void TIMER3_IRQHandler(void)
 
 void lock_mutex(void) {
 	while (mutex == LOCKED) {
+		Board_LED_Set(0, 1);
 		__WFE();
 	}
 	
 	mutex = LOCKED;
 	
+	__DSB();
 	__DMB();
 }
 
@@ -174,7 +177,7 @@ int main(void)
 	NVIC_ClearPendingIRQ(TIMER3_IRQn);
 	
 	while(1) {
-		is_prime = check_prime(prime_test_5);
+		is_prime = check_prime(prime_test_6);
 		
 		idle();
 	}
@@ -195,7 +198,7 @@ void idle(void) {
 	if ((tick_ct - LastTime) >= 1000) {
 		LastTime = tick_ct;
 		
-		debug("M0:: Prime: %u; W: %u; S: %u; L: %5.2f\r\n", prime_test_5, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(SleepingTime + WorkingTime) * 100));
+		debug("M0:: Prime: %u; W: %u; S: %u; L: %5.2f\r\n", prime_test_6, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(SleepingTime + WorkingTime) * 100));
 		
 		SleepingTime = 0;
 		WorkingTime = 0;
