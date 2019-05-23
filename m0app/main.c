@@ -9,9 +9,15 @@
 #include <stdarg.h>
 #include <math.h>
 
-#define DEBUG 1
+#define DEBUG 0
+#define SLAVE
 
 #define TICKRATE_HZ 1000
+
+#if defined(MASTER)
+	#define TICKRATE_HZ_TIM0 10000
+	static uint16_t iteration = 0;
+#endif
 
 #define LPC_UART LPC_USART0
 #define UARTx_IRQn  USART0_IRQn
@@ -33,27 +39,47 @@ static volatile uint32_t tick_ct = 0;
 
 void idle(void);
 int check_prime(uint32_t);
+void debug(char *, ...);
 
 void M4_IRQHandler(void)
 {
-	uint32_t result;
-	
-	ipcex_msg_t msg, msg_out;
-	Chip_CREG_ClearM4Event();
-	
-	if (IPC_tryPopMsg(&msg) != QUEUE_VALID) {
-		return;
-	}
-	
-	result = check_prime(msg.data0);
-	
-	msg_out.id.pid = msg.id.pid;
-	msg_out.id.cpu = (uint16_t) CPUID_M4;
-	msg_out.data0 = result;
-	msg_out.data1 = msg.data1;
-	
-	IPC_tryPushMsg(msg_out.id.cpu, &msg_out);
-	
+	#if defined(MASTER)
+		uint32_t result, delta_time;
+		uint16_t iter;
+		
+		ipcex_msg_t msg;
+		Chip_CREG_ClearM4Event();
+		
+		if (IPC_tryPopMsg(&msg) != QUEUE_VALID) {
+			return;
+		}
+		
+		result = msg.data0;
+		iter = msg.id.pid;
+		delta_time = Chip_TIMER_ReadCount(LPC_TIMER2) - msg.data1;
+		
+		if (iter % TICKRATE_HZ_TIM0 == 0) {
+			debug("M0:: REQUEST PID: %d; RESULT: %u; DELTA TIME: %u;\r\n", iter, result, delta_time);
+		}
+	#elif defined(SLAVE)
+		uint32_t result;
+		
+		ipcex_msg_t msg, msg_out;
+		Chip_CREG_ClearM4Event();
+		
+		if (IPC_tryPopMsg(&msg) != QUEUE_VALID) {
+			return;
+		}
+		
+		result = check_prime(msg.data0);
+		
+		msg_out.id.pid = msg.id.pid;
+		msg_out.id.cpu = (uint16_t) CPUID_M4;
+		msg_out.data0 = result;
+		msg_out.data1 = msg.data1;
+		
+		IPC_tryPushMsg(msg_out.id.cpu, &msg_out);
+	#endif
 }
 
 void TIMER3_IRQHandler(void)
@@ -63,6 +89,30 @@ void TIMER3_IRQHandler(void)
 		tick_ct += 1;
 	}
 }
+
+#if defined(MASTER)
+	void TIMER0_IRQHandler(void)
+	{
+		ipcex_msg_t msg;
+		
+		if (Chip_TIMER_MatchPending(LPC_TIMER0, 1)) {
+			Chip_TIMER_ClearMatch(LPC_TIMER0, 1);
+			
+			msg.id.pid = iteration;
+			msg.id.cpu = (uint16_t) CPUID_M4;
+			msg.data0 = 20; // calc pi precision
+			msg.data1 = Chip_TIMER_ReadCount(LPC_TIMER2); // timestamp
+			
+			IPC_tryPushMsg(msg.id.cpu, &msg);
+			
+			if (iteration % TICKRATE_HZ_TIM0 == 0) {
+				//debug("M4:: REQUEST PID: %d; REQUEST: %u; TIMESTAMP: %u;\r\n", iteration, msg.data0, msg.data1);
+			}
+			
+			iteration++;
+		}
+	}
+#endif
 
 static void debug(char *msg, ...)
 {
@@ -76,7 +126,6 @@ static void debug(char *msg, ...)
 		
 		Chip_UART_SendBlocking(LPC_UART, buff, strlen(buff));
 	}
-
 }
 
 int check_prime(uint32_t a)
@@ -128,6 +177,27 @@ int main(void) {
 	/* Enable timer interrupt */
 	NVIC_EnableIRQ(TIMER3_IRQn);
 	NVIC_ClearPendingIRQ(TIMER3_IRQn);
+		
+	#if defined(MASTER)
+		/* Enable timer 0 clock and reset it */
+		Chip_TIMER_Init(LPC_TIMER0);
+		Chip_RGU_TriggerReset(RGU_TIMER0_RST);
+		while (Chip_RGU_InReset(RGU_TIMER0_RST)) {}
+
+		/* Get timer 0 peripheral clock rate */
+		timerFreq = Chip_Clock_GetRate(CLK_MX_TIMER0);
+
+		/* Timer setup for match and interrupt at TICKRATE_HZ_TIM0 */
+		Chip_TIMER_Reset(LPC_TIMER0);
+		Chip_TIMER_MatchEnableInt(LPC_TIMER0, 1);
+		Chip_TIMER_SetMatch(LPC_TIMER0, 1, (timerFreq / TICKRATE_HZ_TIM0));
+		Chip_TIMER_ResetOnMatchEnable(LPC_TIMER0, 1);
+		Chip_TIMER_Enable(LPC_TIMER0);
+
+		/* Enable timer interrupt */
+		NVIC_EnableIRQ(TIMER0_IRQn);
+		NVIC_ClearPendingIRQ(TIMER0_IRQn);
+	#endif
 	
 	while(1) {
 		is_prime = check_prime(prime_test_4);
@@ -156,5 +226,4 @@ void idle(void) {
 		SleepingTime = 0;
 		WorkingTime = 0;
 	}
-	
 }
