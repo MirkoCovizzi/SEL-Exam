@@ -29,24 +29,28 @@ Project File Date:  05/22/2019
 Rebuild target 'm0'
 assembling keil_startup_lpc43xx_m0app.s...
 compiling sysinit.c...
-compiling m0_img_ldr.c...
 compiling ipc_msg.c...
-compiling main.c...
-main.c(31): warning:  #550-D: variable "is_prime"  was set but never used
-  static int is_prime = 0;
-main.c(32): warning:  #177-D: variable "prime_test_3"  was declared but never referenced
-  static uint32_t prime_test_3 = 101;
-main.c(34): warning:  #177-D: variable "prime_test_5"  was declared but never referenced
-  static uint32_t prime_test_5 = 10007; //Using about 80%
-main.c(35): warning:  #177-D: variable "prime_test_6"  was declared but never referenced
-  static uint32_t prime_test_6 = 100003; //Using about 99%
-main.c(36): warning:  #177-D: variable "prime_test_7"  was declared but never referenced
-  static uint32_t prime_test_7 = 1000003;
-main.c: 5 warnings, 0 errors
+compiling m0_img_ldr.c...
 compiling ipc_example.c...
+compiling main.c...
+main.c(45): warning:  #177-D: variable "m4_handler_LastTime"  was declared but never referenced
+  static uint32_t m4_handler_LastTime = 0;
+main.c(47): warning:  #550-D: variable "is_prime"  was set but never used
+  static int is_prime = 0;
+main.c(48): warning:  #177-D: variable "prime_test_3"  was declared but never referenced
+  static uint32_t prime_test_3 = 101; //Using about 3%
+main.c(50): warning:  #177-D: variable "prime_test_5"  was declared but never referenced
+  static uint32_t prime_test_5 = 10007; //Using about 80%
+main.c(51): warning:  #177-D: variable "prime_test_6"  was declared but never referenced
+  static uint32_t prime_test_6 = 100003; //Using about 99%
+main.c(52): warning:  #177-D: variable "prime_test_7"  was declared but never referenced
+  static uint32_t prime_test_7 = 1000003;
+main.c(53): warning:  #177-D: variable "prime_test_8"  was declared but never referenced
+  static uint32_t prime_test_8 = 10000019;
+main.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=3960 RO-data=528 RW-data=92 ZI-data=2516  
-".\Objects\m0app.axf" - 0 Error(s), 5 Warning(s).
+Program Size: Code=4188 RO-data=528 RW-data=116 ZI-data=2516  
+".\Objects\m0app.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 

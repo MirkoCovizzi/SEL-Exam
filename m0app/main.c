@@ -11,6 +11,21 @@
 
 #define DEBUG 0
 #define SLAVE
+#define ASYNC 1
+#define CPU 1
+#define OTHER_CPU 0
+
+#define SHARED_MUTEX 0x10086000
+#define SHARED_STRUCT 0x10087000
+typedef struct __shared_mutex {
+	uint8_t b[2];
+	uint8_t c[2];
+	uint8_t k;
+} shared_mutex;
+static volatile shared_mutex *mutex = (shared_mutex *) SHARED_MUTEX;
+static volatile ipcex_msg_t *shared_msg = (ipcex_msg_t *) SHARED_STRUCT;
+static volatile uint16_t previous_pid = 0;
+static volatile uint32_t previous_data = 0;
 
 #define TICKRATE_HZ 1000
 
@@ -27,19 +42,50 @@ static uint32_t l = 0;
 static uint32_t WorkingTime = 0;
 static uint32_t SleepingTime = 0;
 static uint32_t LastTime = 0;
+static uint32_t m4_handler_LastTime = 0;
 
 static int is_prime = 0;
-static uint32_t prime_test_3 = 101;
-static uint32_t prime_test_4 = 1009;
+static uint32_t prime_test_3 = 101; //Using about 3%
+static uint32_t prime_test_4 = 1009; //Using about 25%
 static uint32_t prime_test_5 = 10007; //Using about 80%
 static uint32_t prime_test_6 = 100003; //Using about 99%
 static uint32_t prime_test_7 = 1000003;
+static uint32_t prime_test_8 = 10000019;
 
 static volatile uint32_t tick_ct = 0;
 
 void idle(void);
 int check_prime(uint32_t);
 void debug(char *, ...);
+
+static void lock_mutex(void) {
+	__disable_irq();
+	__DMB();
+	mutex->b[CPU] = 0;
+	__DSB();
+	LOOP:if(mutex->k != CPU) {
+		mutex->c[CPU] = 1;
+		__DSB();
+		if (mutex->b[mutex->k]) {
+			mutex->k = CPU;
+			__DSB();
+		}
+		goto LOOP;
+	} else {
+		mutex->c[CPU] = 0;
+		__DSB();
+		if (!mutex->c[OTHER_CPU]) goto LOOP;
+	}
+}
+
+static void unlock_mutex(void) {
+	mutex->b[CPU] = 1;
+	__DSB();
+	mutex->c[CPU] = 1;
+	__DSB();
+	__DMB();
+	__enable_irq();
+}
 
 void M4_IRQHandler(void)
 {
@@ -58,7 +104,8 @@ void M4_IRQHandler(void)
 		iter = msg.id.pid;
 		delta_time = Chip_TIMER_ReadCount(LPC_TIMER2) - msg.data1;
 		
-		if (iter % TICKRATE_HZ_TIM0 == 0) {
+		if ((tick_ct - m4_handler_LastTime) >= 1000) {
+			m4_handler_LastTime = tick_ct;
 			debug("M0:: REQUEST PID: %d; RESULT: %u; DELTA TIME: %u;\r\n", iter, result, delta_time);
 		}
 	#elif defined(SLAVE)
@@ -105,10 +152,6 @@ void TIMER3_IRQHandler(void)
 			
 			IPC_tryPushMsg(msg.id.cpu, &msg);
 			
-			if (iteration % TICKRATE_HZ_TIM0 == 0) {
-				//debug("M4:: REQUEST PID: %d; REQUEST: %u; TIMESTAMP: %u;\r\n", iteration, msg.data0, msg.data1);
-			}
-			
 			iteration++;
 		}
 	}
@@ -125,6 +168,7 @@ static void debug(char *msg, ...)
 		vsprintf(buff, msg, args);
 		
 		Chip_UART_SendBlocking(LPC_UART, buff, strlen(buff));
+
 	}
 }
 
@@ -140,7 +184,8 @@ int check_prime(uint32_t a)
 }
 
 int main(void) {
-	uint32_t timerFreq;
+	uint32_t timerFreq, result;
+	ipcex_msg_t msg;
 	
 	SystemCoreClockUpdate();
 	
@@ -202,6 +247,23 @@ int main(void) {
 	while(1) {
 		is_prime = check_prime(prime_test_4);
 		
+		if (ASYNC) {
+			lock_mutex();
+			if (shared_msg->id.pid != previous_pid && shared_msg->data0 != previous_data) {
+				previous_pid = shared_msg->id.pid + 1;
+
+				msg.data0 = shared_msg->data0;
+				
+				result = check_prime(msg.data0);
+				
+				shared_msg->data0 = result;
+				shared_msg->id.pid = previous_pid;
+				
+				previous_data = shared_msg->data0;
+			}
+			unlock_mutex();
+		}
+		
 		idle();
 	}
 }
@@ -221,7 +283,7 @@ void idle(void) {
 	if ((tick_ct - LastTime) >= 1000) {
 		LastTime = tick_ct;
 		
-		debug("M0:: Prime: %u; W: %u; S: %u; L: %5.2f\r\n", prime_test_4, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(SleepingTime + WorkingTime) * 100));
+		debug("M0:: Prime: %u; W: %u; S: %u; L: %5.2f\r\n", prime_test_4, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(204000000) * 100));
 		
 		SleepingTime = 0;
 		WorkingTime = 0;
