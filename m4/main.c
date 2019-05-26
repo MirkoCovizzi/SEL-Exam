@@ -9,30 +9,41 @@
 #include <stdarg.h>
 #include <math.h>
 
-#define DEBUG 1
+#define DEBUG 0
 #define MASTER
-#define ASYNC 1
+#define ASYNC 0
 #define CPU 0
 #define OTHER_CPU 1
 
 #define SHARED_MUTEX 0x10086000
 #define SHARED_STRUCT 0x10087000
+
 typedef struct __shared_mutex {
-	volatile uint8_t b[2];
-	volatile uint8_t c[2];
-	volatile uint8_t k;
+	volatile uint32_t b[2];
+	volatile uint32_t c[2];
+	volatile uint32_t k;
 } shared_mutex;
+
+typedef struct __ipc_msg {
+	struct {
+		uint32_t cpu;
+		uint32_t pid;
+	} id;
+
+	uint32_t data0;
+	uint32_t data1;
+} ipc_msg;
+
 static volatile shared_mutex *mutex = (shared_mutex *) SHARED_MUTEX;
-static volatile ipcex_msg_t *shared_msg = (ipcex_msg_t *) SHARED_STRUCT;
-static volatile uint16_t previous_pid = 1;
-static volatile uint32_t previous_data = 1;
+static volatile ipc_msg *shared_msg = (ipc_msg *) SHARED_STRUCT;
+static volatile uint32_t previous_pid = 1;
 static volatile int received = 0;
 
 #define CPU_USAGE 1
 #define TICKRATE_HZ 1000
 
 #if defined(MASTER)
-	#define TICKRATE_HZ_TIM0 200000
+	#define TICKRATE_HZ_TIM0 50000
 	static volatile uint16_t iteration = 0;
 #endif
 
@@ -77,6 +88,7 @@ static void lock_mutex(void) {
 }
 
 static void unlock_mutex(void) {
+	__DSB();
 	mutex->b[CPU] = 1;
 	__DSB();
 	mutex->c[CPU] = 1;
@@ -145,13 +157,11 @@ void M0APP_IRQHandler(void)
 			
 			if (ASYNC) {
 				lock_mutex();
-				if (shared_msg->id.pid != previous_pid && shared_msg->data0 != previous_data) {			
-					previous_pid = shared_msg->id.pid + 1;
+				if (shared_msg->id.pid % 2 == 0) {			
 				
+					shared_msg->id.pid = shared_msg->id.pid + 1;
 					shared_msg->data0 = 101; // prime test
-					previous_data = shared_msg->data0;
 					shared_msg->data1 = DWT->CYCCNT;
-					shared_msg->id.pid = previous_pid;
 					
 					received = 0;
 				}
@@ -196,6 +206,22 @@ float calc_pi(int n) {
 	}
 	
 	return 4 / (1 + kal);
+}
+
+static void mutex_test(void) {
+	lock_mutex();
+
+	//debug("M4:: Inside Critical Section\r\n");
+
+	if (shared_msg->id.pid % 2 == 0) {
+		debug("M4:: PID: %d; RESULT: %u; DELTA TIME: %u\r\n", shared_msg->id.pid, shared_msg->data0, DWT->CYCCNT - shared_msg->data1);
+		shared_msg->id.pid = shared_msg->id.pid + 1;
+		shared_msg->data0 = 101; // prime test
+		shared_msg->data1 = DWT->CYCCNT;
+	}
+	
+	//debug("M4:: Exiting Critical Section\r\n");
+	unlock_mutex();
 }
 
 int main(void) {
@@ -288,17 +314,25 @@ int main(void) {
 		
 		if (ASYNC) {
 			lock_mutex();
-			if (shared_msg->id.pid > previous_pid && !received && (tick_ct - async_result_read_LastTime) >= 1000) {
-				async_result_read_LastTime = tick_ct;
+
+			if (shared_msg->id.pid % 2 == 0 && !received) {
 				debug("M4:: REQUEST PID: %d; RESULT: %u; DELTA TIME: %u;\r\n", shared_msg->id.pid, shared_msg->data0, DWT->CYCCNT - shared_msg->data1);
 				received = 1;
 			}
-			if (shared_msg->id.pid > previous_pid && shared_msg->data0 == 101) Board_LED_Set(0, 1);
+
 			unlock_mutex();
 		}
 		
 		idle();
 	}
+	
+	/*
+	//mutex test
+	NVIC_DisableIRQ(TIMER0_IRQn);
+	while(1) {
+		mutex_test();
+	}
+	*/
 }
 
 void idle(void) {
@@ -318,8 +352,10 @@ void idle(void) {
 		
 		if (((float)WorkingTime / (float)(204000000) * 100) < CPU_USAGE) precision += 10;
 		
+		__disable_irq();
 		debug("M4:: PI: %5.15f; Precision: %u; W: %u; S: %u; L: %5.2f\r\n", pi, precision, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(204000000) * 100));
-
+		__enable_irq();
+		
 		SleepingTime = 0;
 		WorkingTime = 0;
 	}

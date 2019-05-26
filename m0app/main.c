@@ -9,23 +9,34 @@
 #include <stdarg.h>
 #include <math.h>
 
-#define DEBUG 0
+#define DEBUG 1
 #define SLAVE
-#define ASYNC 1
+#define ASYNC 0
 #define CPU 1
 #define OTHER_CPU 0
 
 #define SHARED_MUTEX 0x10086000
 #define SHARED_STRUCT 0x10087000
+
 typedef struct __shared_mutex {
-	uint8_t b[2];
-	uint8_t c[2];
-	uint8_t k;
+	uint32_t b[2];
+	uint32_t c[2];
+	uint32_t k;
 } shared_mutex;
+
+typedef struct __ipc_msg {
+	struct {
+		uint32_t cpu;
+		uint32_t pid;
+	} id;
+
+	uint32_t data0;
+	uint32_t data1;
+} ipc_msg;
+
 static volatile shared_mutex *mutex = (shared_mutex *) SHARED_MUTEX;
-static volatile ipcex_msg_t *shared_msg = (ipcex_msg_t *) SHARED_STRUCT;
-static volatile uint16_t previous_pid = 0;
-static volatile uint32_t previous_data = 0;
+static volatile ipc_msg *shared_msg = (ipc_msg *) SHARED_STRUCT;
+static volatile uint32_t previous_pid = 0;
 
 #define TICKRATE_HZ 1000
 
@@ -79,6 +90,7 @@ static void lock_mutex(void) {
 }
 
 static void unlock_mutex(void) {
+	__DSB();
 	mutex->b[CPU] = 1;
 	__DSB();
 	mutex->c[CPU] = 1;
@@ -89,44 +101,48 @@ static void unlock_mutex(void) {
 
 void M4_IRQHandler(void)
 {
-	#if defined(MASTER)
-		uint32_t result, delta_time;
-		uint16_t iter;
-		
-		ipcex_msg_t msg;
+	if (ASYNC) {
 		Chip_CREG_ClearM4Event();
-		
-		if (IPC_tryPopMsg(&msg) != QUEUE_VALID) {
-			return;
-		}
-		
-		result = msg.data0;
-		iter = msg.id.pid;
-		delta_time = Chip_TIMER_ReadCount(LPC_TIMER2) - msg.data1;
-		
-		if ((tick_ct - m4_handler_LastTime) >= 1000) {
-			m4_handler_LastTime = tick_ct;
-			debug("M0:: REQUEST PID: %d; RESULT: %u; DELTA TIME: %u;\r\n", iter, result, delta_time);
-		}
-	#elif defined(SLAVE)
-		uint32_t result;
-		
-		ipcex_msg_t msg, msg_out;
-		Chip_CREG_ClearM4Event();
-		
-		if (IPC_tryPopMsg(&msg) != QUEUE_VALID) {
-			return;
-		}
-		
-		result = check_prime(msg.data0);
-		
-		msg_out.id.pid = msg.id.pid;
-		msg_out.id.cpu = (uint16_t) CPUID_M4;
-		msg_out.data0 = result;
-		msg_out.data1 = msg.data1;
-		
-		IPC_tryPushMsg(msg_out.id.cpu, &msg_out);
-	#endif
+	} else {
+		#if defined(MASTER)
+			uint32_t result, delta_time;
+			uint16_t iter;
+			
+			ipcex_msg_t msg;
+			Chip_CREG_ClearM4Event();
+			
+			if (IPC_tryPopMsg(&msg) != QUEUE_VALID) {
+				return;
+			}
+			
+			result = msg.data0;
+			iter = msg.id.pid;
+			delta_time = Chip_TIMER_ReadCount(LPC_TIMER2) - msg.data1;
+			
+			if ((tick_ct - m4_handler_LastTime) >= 1000) {
+				m4_handler_LastTime = tick_ct;
+				debug("M0:: REQUEST PID: %d; RESULT: %u; DELTA TIME: %u;\r\n", iter, result, delta_time);
+			}
+		#elif defined(SLAVE)
+			uint32_t result;
+			
+			ipcex_msg_t msg, msg_out;
+			Chip_CREG_ClearM4Event();
+			
+			if (IPC_tryPopMsg(&msg) != QUEUE_VALID) {
+				return;
+			}
+			
+			result = check_prime(msg.data0);
+			
+			msg_out.id.pid = msg.id.pid;
+			msg_out.id.cpu = (uint16_t) CPUID_M4;
+			msg_out.data0 = result;
+			msg_out.data1 = msg.data1;
+			
+			IPC_tryPushMsg(msg_out.id.cpu, &msg_out);
+		#endif
+	}
 }
 
 void TIMER3_IRQHandler(void)
@@ -183,9 +199,26 @@ int check_prime(uint32_t a)
    return 1;
 }
 
+static void mutex_test(void) {
+	volatile uint32_t result;
+	
+	lock_mutex();
+	
+	debug("M0:: Inside Critical Section\r\n");
+
+	if (shared_msg->id.pid % 2 == 1) {
+		debug("M0:: PID: %d; REQUEST: %u; TIMESTAMP: %u\r\n", shared_msg->id.pid, shared_msg->data0, shared_msg->data1);
+		shared_msg->id.pid = shared_msg->id.pid + 1;
+		result = check_prime(shared_msg->data0);
+		shared_msg->data0 = result;
+	}
+	
+	debug("M0:: Exiting Critical Section\r\n");
+	unlock_mutex();
+}
+
 int main(void) {
 	uint32_t timerFreq, result;
-	ipcex_msg_t msg;
 	
 	SystemCoreClockUpdate();
 	
@@ -249,23 +282,26 @@ int main(void) {
 		
 		if (ASYNC) {
 			lock_mutex();
-			if (shared_msg->id.pid != previous_pid && shared_msg->data0 != previous_data) {
-				previous_pid = shared_msg->id.pid + 1;
 
-				msg.data0 = shared_msg->data0;
+			if (shared_msg->id.pid % 2 == 1) {
+				result = check_prime(shared_msg->data0);
 				
-				result = check_prime(msg.data0);
-				
+				shared_msg->id.pid = shared_msg->id.pid + 1;
 				shared_msg->data0 = result;
-				shared_msg->id.pid = previous_pid;
-				
-				previous_data = shared_msg->data0;
 			}
+			
 			unlock_mutex();
 		}
 		
 		idle();
 	}
+	
+	/*
+	//mutex test
+	while(1) {
+		mutex_test();
+	}
+	*/
 }
 
 void idle(void) {

@@ -29,28 +29,30 @@ Project File Date:  05/22/2019
 Rebuild target 'm0'
 assembling keil_startup_lpc43xx_m0app.s...
 compiling sysinit.c...
-compiling ipc_msg.c...
 compiling m0_img_ldr.c...
-compiling ipc_example.c...
+compiling ipc_msg.c...
 compiling main.c...
-main.c(45): warning:  #177-D: variable "m4_handler_LastTime"  was declared but never referenced
+main.c(56): warning:  #177-D: variable "m4_handler_LastTime"  was declared but never referenced
   static uint32_t m4_handler_LastTime = 0;
-main.c(47): warning:  #550-D: variable "is_prime"  was set but never used
+main.c(58): warning:  #550-D: variable "is_prime"  was set but never used
   static int is_prime = 0;
-main.c(48): warning:  #177-D: variable "prime_test_3"  was declared but never referenced
+main.c(59): warning:  #177-D: variable "prime_test_3"  was declared but never referenced
   static uint32_t prime_test_3 = 101; //Using about 3%
-main.c(50): warning:  #177-D: variable "prime_test_5"  was declared but never referenced
+main.c(61): warning:  #177-D: variable "prime_test_5"  was declared but never referenced
   static uint32_t prime_test_5 = 10007; //Using about 80%
-main.c(51): warning:  #177-D: variable "prime_test_6"  was declared but never referenced
+main.c(62): warning:  #177-D: variable "prime_test_6"  was declared but never referenced
   static uint32_t prime_test_6 = 100003; //Using about 99%
-main.c(52): warning:  #177-D: variable "prime_test_7"  was declared but never referenced
+main.c(63): warning:  #177-D: variable "prime_test_7"  was declared but never referenced
   static uint32_t prime_test_7 = 1000003;
-main.c(53): warning:  #177-D: variable "prime_test_8"  was declared but never referenced
+main.c(64): warning:  #177-D: variable "prime_test_8"  was declared but never referenced
   static uint32_t prime_test_8 = 10000019;
-main.c: 7 warnings, 0 errors
+main.c(202): warning:  #177-D: function "mutex_test"  was declared but never referenced
+  static void mutex_test(void) {
+main.c: 8 warnings, 0 errors
+compiling ipc_example.c...
 linking...
-Program Size: Code=4188 RO-data=528 RW-data=116 ZI-data=2516  
-".\Objects\m0app.axf" - 0 Error(s), 7 Warning(s).
+Program Size: Code=9808 RO-data=1044 RW-data=112 ZI-data=2512  
+".\Objects\m0app.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -64,7 +66,7 @@ Package Vendor: Keil
   C:\Keil_v5\ARM\PACK\Keil\LPC4300_DFP\2.8.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>
