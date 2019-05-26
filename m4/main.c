@@ -9,9 +9,9 @@
 #include <stdarg.h>
 #include <math.h>
 
-#define DEBUG 0
+#define DEBUG 1
 #define MASTER
-#define ASYNC 0
+#define ASYNC 1
 #define CPU 0
 #define OTHER_CPU 1
 
@@ -157,14 +157,18 @@ void M0APP_IRQHandler(void)
 			
 			if (ASYNC) {
 				lock_mutex();
+				debug("M4:: Entered Critical Section\r\n");
 				if (shared_msg->id.pid % 2 == 0) {			
-				
+					
 					shared_msg->id.pid = shared_msg->id.pid + 1;
 					shared_msg->data0 = 101; // prime test
 					shared_msg->data1 = DWT->CYCCNT;
 					
+					debug("M4:: PID: %u; REQUEST: %u; TIMESTAMP: %u;\r\n", shared_msg->id.pid, shared_msg->data0, shared_msg->data1);
+					
 					received = 0;
 				}
+				debug("M4:: Exiting Critical Section\r\n");
 				unlock_mutex();
 			} else {
 				msg.id.pid = iteration;
@@ -316,7 +320,7 @@ int main(void) {
 			lock_mutex();
 
 			if (shared_msg->id.pid % 2 == 0 && !received) {
-				debug("M4:: REQUEST PID: %d; RESULT: %u; DELTA TIME: %u;\r\n", shared_msg->id.pid, shared_msg->data0, DWT->CYCCNT - shared_msg->data1);
+				debug("M4:: REQUEST PID: %u; RESULT: %u; DELTA TIME: %u;\r\n", shared_msg->id.pid, shared_msg->data0, DWT->CYCCNT - shared_msg->data1);
 				received = 1;
 			}
 

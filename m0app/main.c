@@ -11,7 +11,7 @@
 
 #define DEBUG 1
 #define SLAVE
-#define ASYNC 0
+#define ASYNC 1
 #define CPU 1
 #define OTHER_CPU 0
 
@@ -282,14 +282,16 @@ int main(void) {
 		
 		if (ASYNC) {
 			lock_mutex();
-
+			debug("M0:: Entered Critical Section\r\n");
 			if (shared_msg->id.pid % 2 == 1) {
 				result = check_prime(shared_msg->data0);
 				
 				shared_msg->id.pid = shared_msg->id.pid + 1;
 				shared_msg->data0 = result;
+				
+				debug("M0:: PID: %u; RESULT: %u; TIMESTAMP: %u;\r\n", shared_msg->id.pid, shared_msg->data0, shared_msg->data1);
 			}
-			
+			debug("M0:: Exiting Critical Section\r\n");
 			unlock_mutex();
 		}
 		
@@ -319,7 +321,9 @@ void idle(void) {
 	if ((tick_ct - LastTime) >= 1000) {
 		LastTime = tick_ct;
 		
+		__disable_irq();
 		debug("M0:: Prime: %u; W: %u; S: %u; L: %5.2f\r\n", prime_test_4, WorkingTime, SleepingTime, ((float)WorkingTime / (float)(204000000) * 100));
+		__enable_irq();
 		
 		SleepingTime = 0;
 		WorkingTime = 0;
