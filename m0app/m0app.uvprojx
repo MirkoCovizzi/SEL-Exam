@@ -383,11 +383,6 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
               <FileName>keil_startup_lpc43xx_m0app.s</FileName>
               <FileType>2</FileType>
               <FilePath>..\startup_code\keil_startup_lpc43xx_m0app.s</FilePath>
@@ -411,6 +406,11 @@
               <FileName>m0_img_ldr.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\multicore_common\m0_img_ldr.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main.c</FilePath>
             </File>
           </Files>
         </Group>

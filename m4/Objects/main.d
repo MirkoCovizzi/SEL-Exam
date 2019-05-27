@@ -68,6 +68,7 @@
 .\objects\main.o: app_multicore_cfg.h
 .\objects\main.o: ..\multicore_common\ipc_example.h
 .\objects\main.o: ..\multicore_common\ipc_msg.h
+.\objects\main.o: ..\multicore_common\common_config.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
