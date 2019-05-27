@@ -1282,127 +1282,127 @@ Image Symbol Table
     i.SystemCoreClockUpdate                  0x1a002794   Section        0  chip_18xx_43xx.o(i.SystemCoreClockUpdate)
     i.SystemInit                             0x1a0027a8   Section        0  sysinit.o(i.SystemInit)
     i.TIMER0_IRQHandler                      0x1a0027c4   Section        0  main.o(i.TIMER0_IRQHandler)
-    i.TIMER1_IRQHandler                      0x1a00295c   Section        0  main.o(i.TIMER1_IRQHandler)
-    i.__ARM_fpclassify                       0x1a002984   Section        0  fpclassify.o(i.__ARM_fpclassify)
-    i.__ARM_fpclassifyf                      0x1a0029b4   Section        0  fpclassifyf.o(i.__ARM_fpclassifyf)
-    i.__get_PRIMASK                          0x1a0029da   Section        0  main.o(i.__get_PRIMASK)
-    __get_PRIMASK                            0x1a0029db   Thumb Code     6  main.o(i.__get_PRIMASK)
-    i.__hardfp_powf                          0x1a0029e0   Section        0  powf.o(i.__hardfp_powf)
-    i.__mathlib_flt_divzero                  0x1a003044   Section        0  funder.o(i.__mathlib_flt_divzero)
-    i.__mathlib_flt_infnan2                  0x1a003058   Section        0  funder.o(i.__mathlib_flt_infnan2)
-    i.__mathlib_flt_invalid                  0x1a003060   Section        0  funder.o(i.__mathlib_flt_invalid)
-    i.__mathlib_flt_overflow                 0x1a003070   Section        0  funder.o(i.__mathlib_flt_overflow)
-    i.__mathlib_flt_underflow                0x1a003080   Section        0  funder.o(i.__mathlib_flt_underflow)
-    i._is_digit                              0x1a003090   Section        0  __printf_wp.o(i._is_digit)
-    i._sys_exit                              0x1a00309e   Section        0  board.o(i._sys_exit)
-    i.boot_M0App                             0x1a0030a4   Section        0  main.o(i.boot_M0App)
-    boot_M0App                               0x1a0030a5   Thumb Code    32  main.o(i.boot_M0App)
-    i.calc_pi                                0x1a00310c   Section        0  main.o(i.calc_pi)
-    i.clock_counter_value                    0x1a003180   Section        0  main.o(i.clock_counter_value)
-    clock_counter_value                      0x1a003181   Thumb Code     6  main.o(i.clock_counter_value)
-    i.debug                                  0x1a00318c   Section        0  main.o(i.debug)
-    debug                                    0x1a00318d   Thumb Code   100  main.o(i.debug)
-    i.fpuInit                                0x1a003200   Section        0  fpu_init.o(i.fpuInit)
-    i.idle                                   0x1a00323c   Section        0  main.o(i.idle)
-    i.init_mutex                             0x1a003368   Section        0  main.o(i.init_mutex)
-    init_mutex                               0x1a003369   Thumb Code    18  main.o(i.init_mutex)
-    i.ipc_send_signal                        0x1a00337a   Section        0  ipc_msg.o(i.ipc_send_signal)
-    ipc_send_signal                          0x1a00337b   Thumb Code     8  ipc_msg.o(i.ipc_send_signal)
-    i.ipcex_register_callback                0x1a003384   Section        0  ipc_example.o(i.ipcex_register_callback)
-    i.ipcex_updateGblVal                     0x1a003398   Section        0  ipc_example.o(i.ipcex_updateGblVal)
-    ipcex_updateGblVal                       0x1a003399   Thumb Code    40  ipc_example.o(i.ipcex_updateGblVal)
-    i.lock_mutex                             0x1a0033c8   Section        0  main.o(i.lock_mutex)
-    lock_mutex                               0x1a0033c9   Thumb Code    40  main.o(i.lock_mutex)
-    i.main                                   0x1a0033f0   Section        0  main.o(i.main)
-    i.notify_event                           0x1a003c78   Section        0  main.o(i.notify_event)
-    notify_event                             0x1a003c79   Thumb Code     8  main.o(i.notify_event)
-    i.pll_calc_divs                          0x1a003c80   Section        0  clock_18xx_43xx.o(i.pll_calc_divs)
-    pll_calc_divs                            0x1a003c81   Thumb Code   152  clock_18xx_43xx.o(i.pll_calc_divs)
-    i.pll_get_frac                           0x1a003d20   Section        0  clock_18xx_43xx.o(i.pll_get_frac)
-    pll_get_frac                             0x1a003d21   Thumb Code   184  clock_18xx_43xx.o(i.pll_get_frac)
-    i.print                                  0x1a003ddc   Section        0  main.o(i.print)
-    print                                    0x1a003ddd   Thumb Code    74  main.o(i.print)
-    i.print_menu                             0x1a003e30   Section        0  main.o(i.print_menu)
-    print_menu                               0x1a003e31   Thumb Code    58  main.o(i.print_menu)
-    i.setup_board                            0x1a003fb8   Section        0  main.o(i.setup_board)
-    setup_board                              0x1a003fb9   Thumb Code    12  main.o(i.setup_board)
-    i.setup_clock_counter                    0x1a003fc4   Section        0  main.o(i.setup_clock_counter)
-    setup_clock_counter                      0x1a003fc5   Thumb Code    50  main.o(i.setup_clock_counter)
-    i.setup_request_timer                    0x1a004000   Section        0  main.o(i.setup_request_timer)
-    setup_request_timer                      0x1a004001   Thumb Code    86  main.o(i.setup_request_timer)
-    i.setup_system_timer                     0x1a00405c   Section        0  main.o(i.setup_system_timer)
-    setup_system_timer                       0x1a00405d   Thumb Code    88  main.o(i.setup_system_timer)
-    i.setup_uart                             0x1a0040b8   Section        0  main.o(i.setup_uart)
-    setup_uart                               0x1a0040b9   Thumb Code    42  main.o(i.setup_uart)
-    i.shutdown_M0App                         0x1a0040e8   Section        0  main.o(i.shutdown_M0App)
-    shutdown_M0App                           0x1a0040e9   Thumb Code    16  main.o(i.shutdown_M0App)
-    i.start_request_timer                    0x1a004120   Section        0  main.o(i.start_request_timer)
-    start_request_timer                      0x1a004121   Thumb Code    10  main.o(i.start_request_timer)
-    i.start_system_timer                     0x1a004130   Section        0  main.o(i.start_system_timer)
-    start_system_timer                       0x1a004131   Thumb Code    10  main.o(i.start_system_timer)
-    i.stop_request_timer                     0x1a004140   Section        0  main.o(i.stop_request_timer)
-    stop_request_timer                       0x1a004141   Thumb Code    10  main.o(i.stop_request_timer)
-    i.stop_system_timer                      0x1a004150   Section        0  main.o(i.stop_system_timer)
-    stop_system_timer                        0x1a004151   Thumb Code    10  main.o(i.stop_system_timer)
-    i.unlock_mutex                           0x1a004160   Section        0  main.o(i.unlock_mutex)
-    unlock_mutex                             0x1a004161   Thumb Code     8  main.o(i.unlock_mutex)
-    i.wait_event                             0x1a004168   Section        0  main.o(i.wait_event)
-    wait_event                               0x1a004169   Thumb Code    28  main.o(i.wait_event)
-    locale$$code                             0x1a0041a0   Section       44  lc_numeric_c.o(locale$$code)
-    locale$$code                             0x1a0041cc   Section       44  lc_ctype_c.o(locale$$code)
-    x$fpl$dretinf                            0x1a0041f8   Section       12  dretinf.o(x$fpl$dretinf)
-    $v0                                      0x1a0041f8   Number         0  dretinf.o(x$fpl$dretinf)
-    x$fpl$f2d                                0x1a004204   Section       86  f2d.o(x$fpl$f2d)
-    $v0                                      0x1a004204   Number         0  f2d.o(x$fpl$f2d)
-    x$fpl$fnaninf                            0x1a00425a   Section      140  fnaninf.o(x$fpl$fnaninf)
-    $v0                                      0x1a00425a   Number         0  fnaninf.o(x$fpl$fnaninf)
-    x$fpl$fpinit                             0x1a0042e6   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x1a0042e6   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$printf1                            0x1a0042f0   Section        4  printf1.o(x$fpl$printf1)
-    $v0                                      0x1a0042f0   Number         0  printf1.o(x$fpl$printf1)
-    .constdata                               0x1a0042f4   Section       80  main.o(.constdata)
-    x$fpl$usenofp                            0x1a0042f4   Section        0  usenofp.o(x$fpl$usenofp)
+    i.TIMER1_IRQHandler                      0x1a002958   Section        0  main.o(i.TIMER1_IRQHandler)
+    i.__ARM_fpclassify                       0x1a002980   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i.__ARM_fpclassifyf                      0x1a0029b0   Section        0  fpclassifyf.o(i.__ARM_fpclassifyf)
+    i.__get_PRIMASK                          0x1a0029d6   Section        0  main.o(i.__get_PRIMASK)
+    __get_PRIMASK                            0x1a0029d7   Thumb Code     6  main.o(i.__get_PRIMASK)
+    i.__hardfp_powf                          0x1a0029dc   Section        0  powf.o(i.__hardfp_powf)
+    i.__mathlib_flt_divzero                  0x1a003040   Section        0  funder.o(i.__mathlib_flt_divzero)
+    i.__mathlib_flt_infnan2                  0x1a003054   Section        0  funder.o(i.__mathlib_flt_infnan2)
+    i.__mathlib_flt_invalid                  0x1a00305c   Section        0  funder.o(i.__mathlib_flt_invalid)
+    i.__mathlib_flt_overflow                 0x1a00306c   Section        0  funder.o(i.__mathlib_flt_overflow)
+    i.__mathlib_flt_underflow                0x1a00307c   Section        0  funder.o(i.__mathlib_flt_underflow)
+    i._is_digit                              0x1a00308c   Section        0  __printf_wp.o(i._is_digit)
+    i._sys_exit                              0x1a00309a   Section        0  board.o(i._sys_exit)
+    i.boot_M0App                             0x1a0030a0   Section        0  main.o(i.boot_M0App)
+    boot_M0App                               0x1a0030a1   Thumb Code    32  main.o(i.boot_M0App)
+    i.calc_pi                                0x1a003108   Section        0  main.o(i.calc_pi)
+    i.clock_counter_value                    0x1a00317c   Section        0  main.o(i.clock_counter_value)
+    clock_counter_value                      0x1a00317d   Thumb Code     6  main.o(i.clock_counter_value)
+    i.debug                                  0x1a003188   Section        0  main.o(i.debug)
+    debug                                    0x1a003189   Thumb Code   100  main.o(i.debug)
+    i.fpuInit                                0x1a0031fc   Section        0  fpu_init.o(i.fpuInit)
+    i.idle                                   0x1a003238   Section        0  main.o(i.idle)
+    i.init_mutex                             0x1a003364   Section        0  main.o(i.init_mutex)
+    init_mutex                               0x1a003365   Thumb Code    18  main.o(i.init_mutex)
+    i.ipc_send_signal                        0x1a003376   Section        0  ipc_msg.o(i.ipc_send_signal)
+    ipc_send_signal                          0x1a003377   Thumb Code     8  ipc_msg.o(i.ipc_send_signal)
+    i.ipcex_register_callback                0x1a003380   Section        0  ipc_example.o(i.ipcex_register_callback)
+    i.ipcex_updateGblVal                     0x1a003394   Section        0  ipc_example.o(i.ipcex_updateGblVal)
+    ipcex_updateGblVal                       0x1a003395   Thumb Code    40  ipc_example.o(i.ipcex_updateGblVal)
+    i.lock_mutex                             0x1a0033c4   Section        0  main.o(i.lock_mutex)
+    lock_mutex                               0x1a0033c5   Thumb Code    40  main.o(i.lock_mutex)
+    i.main                                   0x1a0033ec   Section        0  main.o(i.main)
+    i.notify_event                           0x1a003c74   Section        0  main.o(i.notify_event)
+    notify_event                             0x1a003c75   Thumb Code     8  main.o(i.notify_event)
+    i.pll_calc_divs                          0x1a003c7c   Section        0  clock_18xx_43xx.o(i.pll_calc_divs)
+    pll_calc_divs                            0x1a003c7d   Thumb Code   152  clock_18xx_43xx.o(i.pll_calc_divs)
+    i.pll_get_frac                           0x1a003d1c   Section        0  clock_18xx_43xx.o(i.pll_get_frac)
+    pll_get_frac                             0x1a003d1d   Thumb Code   184  clock_18xx_43xx.o(i.pll_get_frac)
+    i.print                                  0x1a003dd8   Section        0  main.o(i.print)
+    print                                    0x1a003dd9   Thumb Code    74  main.o(i.print)
+    i.print_menu                             0x1a003e2c   Section        0  main.o(i.print_menu)
+    print_menu                               0x1a003e2d   Thumb Code    58  main.o(i.print_menu)
+    i.setup_board                            0x1a003fb4   Section        0  main.o(i.setup_board)
+    setup_board                              0x1a003fb5   Thumb Code    12  main.o(i.setup_board)
+    i.setup_clock_counter                    0x1a003fc0   Section        0  main.o(i.setup_clock_counter)
+    setup_clock_counter                      0x1a003fc1   Thumb Code    50  main.o(i.setup_clock_counter)
+    i.setup_request_timer                    0x1a003ffc   Section        0  main.o(i.setup_request_timer)
+    setup_request_timer                      0x1a003ffd   Thumb Code    86  main.o(i.setup_request_timer)
+    i.setup_system_timer                     0x1a004058   Section        0  main.o(i.setup_system_timer)
+    setup_system_timer                       0x1a004059   Thumb Code    88  main.o(i.setup_system_timer)
+    i.setup_uart                             0x1a0040b4   Section        0  main.o(i.setup_uart)
+    setup_uart                               0x1a0040b5   Thumb Code    42  main.o(i.setup_uart)
+    i.shutdown_M0App                         0x1a0040e4   Section        0  main.o(i.shutdown_M0App)
+    shutdown_M0App                           0x1a0040e5   Thumb Code    16  main.o(i.shutdown_M0App)
+    i.start_request_timer                    0x1a00411c   Section        0  main.o(i.start_request_timer)
+    start_request_timer                      0x1a00411d   Thumb Code    10  main.o(i.start_request_timer)
+    i.start_system_timer                     0x1a00412c   Section        0  main.o(i.start_system_timer)
+    start_system_timer                       0x1a00412d   Thumb Code    10  main.o(i.start_system_timer)
+    i.stop_request_timer                     0x1a00413c   Section        0  main.o(i.stop_request_timer)
+    stop_request_timer                       0x1a00413d   Thumb Code    10  main.o(i.stop_request_timer)
+    i.stop_system_timer                      0x1a00414c   Section        0  main.o(i.stop_system_timer)
+    stop_system_timer                        0x1a00414d   Thumb Code    10  main.o(i.stop_system_timer)
+    i.unlock_mutex                           0x1a00415c   Section        0  main.o(i.unlock_mutex)
+    unlock_mutex                             0x1a00415d   Thumb Code     8  main.o(i.unlock_mutex)
+    i.wait_event                             0x1a004164   Section        0  main.o(i.wait_event)
+    wait_event                               0x1a004165   Thumb Code    28  main.o(i.wait_event)
+    locale$$code                             0x1a00419c   Section       44  lc_numeric_c.o(locale$$code)
+    locale$$code                             0x1a0041c8   Section       44  lc_ctype_c.o(locale$$code)
+    x$fpl$dretinf                            0x1a0041f4   Section       12  dretinf.o(x$fpl$dretinf)
+    $v0                                      0x1a0041f4   Number         0  dretinf.o(x$fpl$dretinf)
+    x$fpl$f2d                                0x1a004200   Section       86  f2d.o(x$fpl$f2d)
+    $v0                                      0x1a004200   Number         0  f2d.o(x$fpl$f2d)
+    x$fpl$fnaninf                            0x1a004256   Section      140  fnaninf.o(x$fpl$fnaninf)
+    $v0                                      0x1a004256   Number         0  fnaninf.o(x$fpl$fnaninf)
+    x$fpl$fpinit                             0x1a0042e2   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x1a0042e2   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$printf1                            0x1a0042ec   Section        4  printf1.o(x$fpl$printf1)
+    $v0                                      0x1a0042ec   Number         0  printf1.o(x$fpl$printf1)
+    .constdata                               0x1a0042f0   Section       80  main.o(.constdata)
+    x$fpl$usenofp                            0x1a0042f0   Section        0  usenofp.o(x$fpl$usenofp)
+    .constdata                               0x1a004340   Section        4  board.o(.constdata)
     .constdata                               0x1a004344   Section        4  board.o(.constdata)
-    .constdata                               0x1a004348   Section        4  board.o(.constdata)
-    .constdata                               0x1a00434c   Section        6  board.o(.constdata)
-    gpioLEDBits                              0x1a00434c   Data           6  board.o(.constdata)
-    .constdata                               0x1a004352   Section       64  board_sysinit.o(.constdata)
-    InitClkStates                            0x1a004352   Data          12  board_sysinit.o(.constdata)
-    pinmuxing                                0x1a00435e   Data          52  board_sysinit.o(.constdata)
-    .constdata                               0x1a004392   Section      108  clock_18xx_43xx.o(.constdata)
-    periph_to_base                           0x1a004392   Data         108  clock_18xx_43xx.o(.constdata)
-    .constdata                               0x1a0043fe   Section       16  uart_18xx_43xx.o(.constdata)
-    UART_PClock                              0x1a0043fe   Data           8  uart_18xx_43xx.o(.constdata)
-    UART_BClock                              0x1a004406   Data           8  uart_18xx_43xx.o(.constdata)
-    .constdata                               0x1a00440e   Section       72  sysinit_18xx_43xx.o(.constdata)
-    InitClkStates                            0x1a00440e   Data          72  sysinit_18xx_43xx.o(.constdata)
-    .constdata                               0x1a004458   Section      320  powf.o(.constdata)
-    table                                    0x1a004458   Data         128  powf.o(.constdata)
-    powersof2to1over16top                    0x1a0044d8   Data          64  powf.o(.constdata)
-    powersof2to1over16bot                    0x1a004518   Data          64  powf.o(.constdata)
-    powersof2to1over16all                    0x1a004558   Data          64  powf.o(.constdata)
-    .constdata                               0x1a004598   Section        8  _printf_wctomb.o(.constdata)
-    initial_mbstate                          0x1a004598   Data           8  _printf_wctomb.o(.constdata)
-    .constdata                               0x1a0045a0   Section       40  _printf_hex_int_ll_ptr.o(.constdata)
-    uc_hextab                                0x1a0045a0   Data          20  _printf_hex_int_ll_ptr.o(.constdata)
-    lc_hextab                                0x1a0045b4   Data          20  _printf_hex_int_ll_ptr.o(.constdata)
-    .constdata                               0x1a0045c8   Section       17  __printf_flags_ss_wp.o(.constdata)
-    maptable                                 0x1a0045c8   Data          17  __printf_flags_ss_wp.o(.constdata)
-    .constdata                               0x1a0045dc   Section      148  bigflt0.o(.constdata)
-    tenpwrs_x                                0x1a0045dc   Data          60  bigflt0.o(.constdata)
-    tenpwrs_i                                0x1a004618   Data          64  bigflt0.o(.constdata)
-    .conststring                             0x1a004670   Section      123  ipc_msg.o(.conststring)
-    locale$$data                             0x1a00470c   Section       28  lc_numeric_c.o(locale$$data)
-    __lcnum_c_name                           0x1a004710   Data           2  lc_numeric_c.o(locale$$data)
-    __lcnum_c_start                          0x1a004718   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_point                          0x1a004724   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_thousands                      0x1a004726   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_grouping                       0x1a004727   Data           0  lc_numeric_c.o(locale$$data)
-    locale$$data                             0x1a004728   Section      272  lc_ctype_c.o(locale$$data)
-    __lcnum_c_end                            0x1a004728   Data           0  lc_numeric_c.o(locale$$data)
-    __lcctype_c_name                         0x1a00472c   Data           2  lc_ctype_c.o(locale$$data)
-    __lcctype_c_start                        0x1a004734   Data           0  lc_ctype_c.o(locale$$data)
-    __lcctype_c_end                          0x1a004838   Data           0  lc_ctype_c.o(locale$$data)
+    .constdata                               0x1a004348   Section        6  board.o(.constdata)
+    gpioLEDBits                              0x1a004348   Data           6  board.o(.constdata)
+    .constdata                               0x1a00434e   Section       64  board_sysinit.o(.constdata)
+    InitClkStates                            0x1a00434e   Data          12  board_sysinit.o(.constdata)
+    pinmuxing                                0x1a00435a   Data          52  board_sysinit.o(.constdata)
+    .constdata                               0x1a00438e   Section      108  clock_18xx_43xx.o(.constdata)
+    periph_to_base                           0x1a00438e   Data         108  clock_18xx_43xx.o(.constdata)
+    .constdata                               0x1a0043fa   Section       16  uart_18xx_43xx.o(.constdata)
+    UART_PClock                              0x1a0043fa   Data           8  uart_18xx_43xx.o(.constdata)
+    UART_BClock                              0x1a004402   Data           8  uart_18xx_43xx.o(.constdata)
+    .constdata                               0x1a00440a   Section       72  sysinit_18xx_43xx.o(.constdata)
+    InitClkStates                            0x1a00440a   Data          72  sysinit_18xx_43xx.o(.constdata)
+    .constdata                               0x1a004454   Section      320  powf.o(.constdata)
+    table                                    0x1a004454   Data         128  powf.o(.constdata)
+    powersof2to1over16top                    0x1a0044d4   Data          64  powf.o(.constdata)
+    powersof2to1over16bot                    0x1a004514   Data          64  powf.o(.constdata)
+    powersof2to1over16all                    0x1a004554   Data          64  powf.o(.constdata)
+    .constdata                               0x1a004594   Section        8  _printf_wctomb.o(.constdata)
+    initial_mbstate                          0x1a004594   Data           8  _printf_wctomb.o(.constdata)
+    .constdata                               0x1a00459c   Section       40  _printf_hex_int_ll_ptr.o(.constdata)
+    uc_hextab                                0x1a00459c   Data          20  _printf_hex_int_ll_ptr.o(.constdata)
+    lc_hextab                                0x1a0045b0   Data          20  _printf_hex_int_ll_ptr.o(.constdata)
+    .constdata                               0x1a0045c4   Section       17  __printf_flags_ss_wp.o(.constdata)
+    maptable                                 0x1a0045c4   Data          17  __printf_flags_ss_wp.o(.constdata)
+    .constdata                               0x1a0045d8   Section      148  bigflt0.o(.constdata)
+    tenpwrs_x                                0x1a0045d8   Data          60  bigflt0.o(.constdata)
+    tenpwrs_i                                0x1a004614   Data          64  bigflt0.o(.constdata)
+    .conststring                             0x1a00466c   Section      123  ipc_msg.o(.conststring)
+    locale$$data                             0x1a004708   Section       28  lc_numeric_c.o(locale$$data)
+    __lcnum_c_name                           0x1a00470c   Data           2  lc_numeric_c.o(locale$$data)
+    __lcnum_c_start                          0x1a004714   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_point                          0x1a004720   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_thousands                      0x1a004722   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_grouping                       0x1a004723   Data           0  lc_numeric_c.o(locale$$data)
+    locale$$data                             0x1a004724   Section      272  lc_ctype_c.o(locale$$data)
+    __lcnum_c_end                            0x1a004724   Data           0  lc_numeric_c.o(locale$$data)
+    __lcctype_c_name                         0x1a004728   Data           2  lc_ctype_c.o(locale$$data)
+    __lcctype_c_start                        0x1a004730   Data           0  lc_ctype_c.o(locale$$data)
+    __lcctype_c_end                          0x1a004834   Data           0  lc_ctype_c.o(locale$$data)
 
     Global Symbols
 
@@ -1695,40 +1695,40 @@ Image Symbol Table
     M0Image_Boot                             0x1a0026f1   Thumb Code   112  m0_img_ldr.o(i.M0Image_Boot)
     SystemCoreClockUpdate                    0x1a002795   Thumb Code    14  chip_18xx_43xx.o(i.SystemCoreClockUpdate)
     SystemInit                               0x1a0027a9   Thumb Code    18  sysinit.o(i.SystemInit)
-    TIMER0_IRQHandler                        0x1a0027c5   Thumb Code   258  main.o(i.TIMER0_IRQHandler)
-    TIMER1_IRQHandler                        0x1a00295d   Thumb Code    32  main.o(i.TIMER1_IRQHandler)
-    __ARM_fpclassify                         0x1a002985   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
-    __ARM_fpclassifyf                        0x1a0029b5   Thumb Code    38  fpclassifyf.o(i.__ARM_fpclassifyf)
-    __hardfp_powf                            0x1a0029e1   Thumb Code  1606  powf.o(i.__hardfp_powf)
-    __mathlib_powf                           0x1a0029e1   Thumb Code     0  powf.o(i.__hardfp_powf)
-    __mathlib_flt_divzero                    0x1a003045   Thumb Code    14  funder.o(i.__mathlib_flt_divzero)
-    __mathlib_flt_infnan2                    0x1a003059   Thumb Code     6  funder.o(i.__mathlib_flt_infnan2)
-    __mathlib_flt_invalid                    0x1a003061   Thumb Code    10  funder.o(i.__mathlib_flt_invalid)
-    __mathlib_flt_overflow                   0x1a003071   Thumb Code    10  funder.o(i.__mathlib_flt_overflow)
-    __mathlib_flt_underflow                  0x1a003081   Thumb Code    10  funder.o(i.__mathlib_flt_underflow)
-    _is_digit                                0x1a003091   Thumb Code    14  __printf_wp.o(i._is_digit)
-    _sys_exit                                0x1a00309f   Thumb Code     4  board.o(i._sys_exit)
-    calc_pi                                  0x1a00310d   Thumb Code   116  main.o(i.calc_pi)
-    fpuInit                                  0x1a003201   Thumb Code    46  fpu_init.o(i.fpuInit)
-    idle                                     0x1a00323d   Thumb Code   208  main.o(i.idle)
-    ipcex_register_callback                  0x1a003385   Thumb Code    16  ipc_example.o(i.ipcex_register_callback)
-    main                                     0x1a0033f1   Thumb Code  1980  main.o(i.main)
-    _get_lc_numeric                          0x1a0041a1   Thumb Code    44  lc_numeric_c.o(locale$$code)
-    _get_lc_ctype                            0x1a0041cd   Thumb Code    44  lc_ctype_c.o(locale$$code)
-    __fpl_dretinf                            0x1a0041f9   Thumb Code    12  dretinf.o(x$fpl$dretinf)
-    __aeabi_f2d                              0x1a004205   Thumb Code     0  f2d.o(x$fpl$f2d)
-    _f2d                                     0x1a004205   Thumb Code    86  f2d.o(x$fpl$f2d)
-    __fpl_fnaninf                            0x1a00425b   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
-    _fp_init                                 0x1a0042e7   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x1a0042ef   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x1a0042ef   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    _printf_fp_dec                           0x1a0042f1   Thumb Code     4  printf1.o(x$fpl$printf1)
-    __I$use$fp                               0x1a0042f4   Number         0  usenofp.o(x$fpl$usenofp)
-    ExtRateIn                                0x1a004344   Data           4  board.o(.constdata)
-    OscRateIn                                0x1a004348   Data           4  board.o(.constdata)
-    Region$$Table$$Base                      0x1a0046ec   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x1a00470c   Number         0  anon$$obj.o(Region$$Table)
-    __ctype                                  0x1a004735   Data           0  lc_ctype_c.o(locale$$data)
+    TIMER0_IRQHandler                        0x1a0027c5   Thumb Code   254  main.o(i.TIMER0_IRQHandler)
+    TIMER1_IRQHandler                        0x1a002959   Thumb Code    32  main.o(i.TIMER1_IRQHandler)
+    __ARM_fpclassify                         0x1a002981   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
+    __ARM_fpclassifyf                        0x1a0029b1   Thumb Code    38  fpclassifyf.o(i.__ARM_fpclassifyf)
+    __hardfp_powf                            0x1a0029dd   Thumb Code  1606  powf.o(i.__hardfp_powf)
+    __mathlib_powf                           0x1a0029dd   Thumb Code     0  powf.o(i.__hardfp_powf)
+    __mathlib_flt_divzero                    0x1a003041   Thumb Code    14  funder.o(i.__mathlib_flt_divzero)
+    __mathlib_flt_infnan2                    0x1a003055   Thumb Code     6  funder.o(i.__mathlib_flt_infnan2)
+    __mathlib_flt_invalid                    0x1a00305d   Thumb Code    10  funder.o(i.__mathlib_flt_invalid)
+    __mathlib_flt_overflow                   0x1a00306d   Thumb Code    10  funder.o(i.__mathlib_flt_overflow)
+    __mathlib_flt_underflow                  0x1a00307d   Thumb Code    10  funder.o(i.__mathlib_flt_underflow)
+    _is_digit                                0x1a00308d   Thumb Code    14  __printf_wp.o(i._is_digit)
+    _sys_exit                                0x1a00309b   Thumb Code     4  board.o(i._sys_exit)
+    calc_pi                                  0x1a003109   Thumb Code   116  main.o(i.calc_pi)
+    fpuInit                                  0x1a0031fd   Thumb Code    46  fpu_init.o(i.fpuInit)
+    idle                                     0x1a003239   Thumb Code   208  main.o(i.idle)
+    ipcex_register_callback                  0x1a003381   Thumb Code    16  ipc_example.o(i.ipcex_register_callback)
+    main                                     0x1a0033ed   Thumb Code  1980  main.o(i.main)
+    _get_lc_numeric                          0x1a00419d   Thumb Code    44  lc_numeric_c.o(locale$$code)
+    _get_lc_ctype                            0x1a0041c9   Thumb Code    44  lc_ctype_c.o(locale$$code)
+    __fpl_dretinf                            0x1a0041f5   Thumb Code    12  dretinf.o(x$fpl$dretinf)
+    __aeabi_f2d                              0x1a004201   Thumb Code     0  f2d.o(x$fpl$f2d)
+    _f2d                                     0x1a004201   Thumb Code    86  f2d.o(x$fpl$f2d)
+    __fpl_fnaninf                            0x1a004257   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
+    _fp_init                                 0x1a0042e3   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x1a0042eb   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x1a0042eb   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    _printf_fp_dec                           0x1a0042ed   Thumb Code     4  printf1.o(x$fpl$printf1)
+    __I$use$fp                               0x1a0042f0   Number         0  usenofp.o(x$fpl$usenofp)
+    ExtRateIn                                0x1a004340   Data           4  board.o(.constdata)
+    OscRateIn                                0x1a004344   Data           4  board.o(.constdata)
+    Region$$Table$$Base                      0x1a0046e8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x1a004708   Number         0  anon$$obj.o(Region$$Table)
+    __ctype                                  0x1a004731   Data           0  lc_ctype_c.o(locale$$data)
 
 
 
@@ -1738,25 +1738,25 @@ Memory Map of the image
 
   Image Entry point : 0x1a000115
 
-  Load Region LR_IROM1 (Base: 0x1a000000, Size: 0x000048b4, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x1a000000, Size: 0x000048b0, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region RW_IRAM1 (Exec base: 0x10000000, Load base: 0x1a004838, Size: 0x00000750, Max: 0x00008000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x10000000, Load base: 0x1a004834, Size: 0x00000750, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x10000000   0x1a004838   0x00000020   Data   RW          283    .data               ipc_msg.o
-    0x10000020   0x1a004858   0x00000004   Data   RW          375    .data               ipc_example.o
-    0x10000024   0x1a00485c   0x0000004c   Data   RW          488    .data               main.o
-    0x10000070   0x1a0048a8   0x00000004   Data   RW         1160    .data               lib_lpc_chip_43xx.lib(chip_18xx_43xx.o)
-    0x10000074   0x1a0048ac   0x00000008   Data   RW         1416    .data               lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
+    0x10000000   0x1a004834   0x00000020   Data   RW          283    .data               ipc_msg.o
+    0x10000020   0x1a004854   0x00000004   Data   RW          375    .data               ipc_example.o
+    0x10000024   0x1a004858   0x0000004c   Data   RW          488    .data               main.o
+    0x10000070   0x1a0048a4   0x00000004   Data   RW         1160    .data               lib_lpc_chip_43xx.lib(chip_18xx_43xx.o)
+    0x10000074   0x1a0048a8   0x00000008   Data   RW         1416    .data               lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
     0x1000007c        -       0x00000370   Zero   RW          374    .bss                ipc_example.o
     0x100003ec        -       0x00000060   Zero   RW         2458    .bss                c_w.l(libspace.o)
-    0x1000044c   0x1a0048b4   0x00000004   PAD
+    0x1000044c   0x1a0048b0   0x00000004   PAD
     0x10000450        -       0x00000000   Zero   RW            2    HEAP                keil_startup_lpc18xx43xx.o
     0x10000450        -       0x00000300   Zero   RW            1    STACK               keil_startup_lpc18xx43xx.o
 
 
-    Execution Region ER_IROM1 (Exec base: 0x1a000000, Load base: 0x1a000000, Size: 0x00004838, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x1a000000, Load base: 0x1a000000, Size: 0x00004834, Max: 0x00080000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1954,79 +1954,79 @@ Memory Map of the image
     0x1a002792   0x1a002792   0x00000002   PAD
     0x1a002794   0x1a002794   0x00000014   Code   RO         1158    i.SystemCoreClockUpdate  lib_lpc_chip_43xx.lib(chip_18xx_43xx.o)
     0x1a0027a8   0x1a0027a8   0x0000001c   Code   RO           12    i.SystemInit        sysinit.o
-    0x1a0027c4   0x1a0027c4   0x00000198   Code   RO          461    i.TIMER0_IRQHandler  main.o
-    0x1a00295c   0x1a00295c   0x00000028   Code   RO          462    i.TIMER1_IRQHandler  main.o
-    0x1a002984   0x1a002984   0x00000030   Code   RO         2511    i.__ARM_fpclassify  m_wm.l(fpclassify.o)
-    0x1a0029b4   0x1a0029b4   0x00000026   Code   RO         2404    i.__ARM_fpclassifyf  m_wm.l(fpclassifyf.o)
-    0x1a0029da   0x1a0029da   0x00000006   Code   RO          463    i.__get_PRIMASK     main.o
-    0x1a0029e0   0x1a0029e0   0x00000664   Code   RO         2283    i.__hardfp_powf     m_wm.l(powf.o)
-    0x1a003044   0x1a003044   0x00000014   Code   RO         2406    i.__mathlib_flt_divzero  m_wm.l(funder.o)
-    0x1a003058   0x1a003058   0x00000006   Code   RO         2408    i.__mathlib_flt_infnan2  m_wm.l(funder.o)
-    0x1a00305e   0x1a00305e   0x00000002   PAD
-    0x1a003060   0x1a003060   0x00000010   Code   RO         2409    i.__mathlib_flt_invalid  m_wm.l(funder.o)
-    0x1a003070   0x1a003070   0x00000010   Code   RO         2410    i.__mathlib_flt_overflow  m_wm.l(funder.o)
-    0x1a003080   0x1a003080   0x00000010   Code   RO         2412    i.__mathlib_flt_underflow  m_wm.l(funder.o)
-    0x1a003090   0x1a003090   0x0000000e   Code   RO         2362    i._is_digit         c_w.l(__printf_wp.o)
-    0x1a00309e   0x1a00309e   0x00000004   Code   RO          731    i._sys_exit         lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
-    0x1a0030a2   0x1a0030a2   0x00000002   PAD
-    0x1a0030a4   0x1a0030a4   0x00000068   Code   RO          464    i.boot_M0App        main.o
-    0x1a00310c   0x1a00310c   0x00000074   Code   RO          465    i.calc_pi           main.o
-    0x1a003180   0x1a003180   0x0000000c   Code   RO          466    i.clock_counter_value  main.o
-    0x1a00318c   0x1a00318c   0x00000074   Code   RO          467    i.debug             main.o
-    0x1a003200   0x1a003200   0x0000003c   Code   RO         1774    i.fpuInit           lib_lpc_chip_43xx.lib(fpu_init.o)
-    0x1a00323c   0x1a00323c   0x0000012c   Code   RO          468    i.idle              main.o
-    0x1a003368   0x1a003368   0x00000012   Code   RO          469    i.init_mutex        main.o
-    0x1a00337a   0x1a00337a   0x00000008   Code   RO          281    i.ipc_send_signal   ipc_msg.o
-    0x1a003382   0x1a003382   0x00000002   PAD
-    0x1a003384   0x1a003384   0x00000014   Code   RO          370    i.ipcex_register_callback  ipc_example.o
-    0x1a003398   0x1a003398   0x00000030   Code   RO          373    i.ipcex_updateGblVal  ipc_example.o
-    0x1a0033c8   0x1a0033c8   0x00000028   Code   RO          470    i.lock_mutex        main.o
-    0x1a0033f0   0x1a0033f0   0x00000888   Code   RO          471    i.main              main.o
-    0x1a003c78   0x1a003c78   0x00000008   Code   RO          472    i.notify_event      main.o
-    0x1a003c80   0x1a003c80   0x000000a0   Code   RO         1413    i.pll_calc_divs     lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
-    0x1a003d20   0x1a003d20   0x000000bc   Code   RO         1414    i.pll_get_frac      lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
-    0x1a003ddc   0x1a003ddc   0x00000054   Code   RO          473    i.print             main.o
-    0x1a003e30   0x1a003e30   0x00000188   Code   RO          474    i.print_menu        main.o
-    0x1a003fb8   0x1a003fb8   0x0000000c   Code   RO          475    i.setup_board       main.o
-    0x1a003fc4   0x1a003fc4   0x0000003c   Code   RO          476    i.setup_clock_counter  main.o
-    0x1a004000   0x1a004000   0x0000005c   Code   RO          477    i.setup_request_timer  main.o
-    0x1a00405c   0x1a00405c   0x0000005c   Code   RO          478    i.setup_system_timer  main.o
-    0x1a0040b8   0x1a0040b8   0x00000030   Code   RO          479    i.setup_uart        main.o
-    0x1a0040e8   0x1a0040e8   0x00000038   Code   RO          480    i.shutdown_M0App    main.o
-    0x1a004120   0x1a004120   0x00000010   Code   RO          481    i.start_request_timer  main.o
-    0x1a004130   0x1a004130   0x00000010   Code   RO          482    i.start_system_timer  main.o
-    0x1a004140   0x1a004140   0x00000010   Code   RO          483    i.stop_request_timer  main.o
-    0x1a004150   0x1a004150   0x00000010   Code   RO          484    i.stop_system_timer  main.o
-    0x1a004160   0x1a004160   0x00000008   Code   RO          485    i.unlock_mutex      main.o
-    0x1a004168   0x1a004168   0x00000038   Code   RO          486    i.wait_event        main.o
-    0x1a0041a0   0x1a0041a0   0x0000002c   Code   RO         2497    locale$$code        c_w.l(lc_numeric_c.o)
-    0x1a0041cc   0x1a0041cc   0x0000002c   Code   RO         2518    locale$$code        c_w.l(lc_ctype_c.o)
-    0x1a0041f8   0x1a0041f8   0x0000000c   Code   RO         2395    x$fpl$dretinf       fz_wm.l(dretinf.o)
-    0x1a004204   0x1a004204   0x00000056   Code   RO         2281    x$fpl$f2d           fz_wm.l(f2d.o)
-    0x1a00425a   0x1a00425a   0x0000008c   Code   RO         2397    x$fpl$fnaninf       fz_wm.l(fnaninf.o)
-    0x1a0042e6   0x1a0042e6   0x0000000a   Code   RO         2584    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x1a0042f0   0x1a0042f0   0x00000004   Code   RO         2401    x$fpl$printf1       fz_wm.l(printf1.o)
-    0x1a0042f4   0x1a0042f4   0x00000000   Code   RO         2403    x$fpl$usenofp       fz_wm.l(usenofp.o)
-    0x1a0042f4   0x1a0042f4   0x00000050   Data   RO          487    .constdata          main.o
-    0x1a004344   0x1a004344   0x00000004   Data   RO          736    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
-    0x1a004348   0x1a004348   0x00000004   Data   RO          737    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
-    0x1a00434c   0x1a00434c   0x00000006   Data   RO          738    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
-    0x1a004352   0x1a004352   0x00000040   Data   RO         1102    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board_sysinit.o)
-    0x1a004392   0x1a004392   0x0000006c   Data   RO         1415    .constdata          lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
-    0x1a0043fe   0x1a0043fe   0x00000010   Data   RO         1665    .constdata          lib_lpc_chip_43xx.lib(uart_18xx_43xx.o)
-    0x1a00440e   0x1a00440e   0x00000048   Data   RO         2011    .constdata          lib_lpc_chip_43xx.lib(sysinit_18xx_43xx.o)
-    0x1a004456   0x1a004456   0x00000002   PAD
-    0x1a004458   0x1a004458   0x00000140   Data   RO         2286    .constdata          m_wm.l(powf.o)
-    0x1a004598   0x1a004598   0x00000008   Data   RO         2321    .constdata          c_w.l(_printf_wctomb.o)
-    0x1a0045a0   0x1a0045a0   0x00000028   Data   RO         2350    .constdata          c_w.l(_printf_hex_int_ll_ptr.o)
-    0x1a0045c8   0x1a0045c8   0x00000011   Data   RO         2370    .constdata          c_w.l(__printf_flags_ss_wp.o)
-    0x1a0045d9   0x1a0045d9   0x00000003   PAD
-    0x1a0045dc   0x1a0045dc   0x00000094   Data   RO         2472    .constdata          c_w.l(bigflt0.o)
-    0x1a004670   0x1a004670   0x0000007b   Data   RO          282    .conststring        ipc_msg.o
-    0x1a0046eb   0x1a0046eb   0x00000001   PAD
-    0x1a0046ec   0x1a0046ec   0x00000020   Data   RO         2640    Region$$Table       anon$$obj.o
-    0x1a00470c   0x1a00470c   0x0000001c   Data   RO         2496    locale$$data        c_w.l(lc_numeric_c.o)
-    0x1a004728   0x1a004728   0x00000110   Data   RO         2517    locale$$data        c_w.l(lc_ctype_c.o)
+    0x1a0027c4   0x1a0027c4   0x00000194   Code   RO          461    i.TIMER0_IRQHandler  main.o
+    0x1a002958   0x1a002958   0x00000028   Code   RO          462    i.TIMER1_IRQHandler  main.o
+    0x1a002980   0x1a002980   0x00000030   Code   RO         2511    i.__ARM_fpclassify  m_wm.l(fpclassify.o)
+    0x1a0029b0   0x1a0029b0   0x00000026   Code   RO         2404    i.__ARM_fpclassifyf  m_wm.l(fpclassifyf.o)
+    0x1a0029d6   0x1a0029d6   0x00000006   Code   RO          463    i.__get_PRIMASK     main.o
+    0x1a0029dc   0x1a0029dc   0x00000664   Code   RO         2283    i.__hardfp_powf     m_wm.l(powf.o)
+    0x1a003040   0x1a003040   0x00000014   Code   RO         2406    i.__mathlib_flt_divzero  m_wm.l(funder.o)
+    0x1a003054   0x1a003054   0x00000006   Code   RO         2408    i.__mathlib_flt_infnan2  m_wm.l(funder.o)
+    0x1a00305a   0x1a00305a   0x00000002   PAD
+    0x1a00305c   0x1a00305c   0x00000010   Code   RO         2409    i.__mathlib_flt_invalid  m_wm.l(funder.o)
+    0x1a00306c   0x1a00306c   0x00000010   Code   RO         2410    i.__mathlib_flt_overflow  m_wm.l(funder.o)
+    0x1a00307c   0x1a00307c   0x00000010   Code   RO         2412    i.__mathlib_flt_underflow  m_wm.l(funder.o)
+    0x1a00308c   0x1a00308c   0x0000000e   Code   RO         2362    i._is_digit         c_w.l(__printf_wp.o)
+    0x1a00309a   0x1a00309a   0x00000004   Code   RO          731    i._sys_exit         lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
+    0x1a00309e   0x1a00309e   0x00000002   PAD
+    0x1a0030a0   0x1a0030a0   0x00000068   Code   RO          464    i.boot_M0App        main.o
+    0x1a003108   0x1a003108   0x00000074   Code   RO          465    i.calc_pi           main.o
+    0x1a00317c   0x1a00317c   0x0000000c   Code   RO          466    i.clock_counter_value  main.o
+    0x1a003188   0x1a003188   0x00000074   Code   RO          467    i.debug             main.o
+    0x1a0031fc   0x1a0031fc   0x0000003c   Code   RO         1774    i.fpuInit           lib_lpc_chip_43xx.lib(fpu_init.o)
+    0x1a003238   0x1a003238   0x0000012c   Code   RO          468    i.idle              main.o
+    0x1a003364   0x1a003364   0x00000012   Code   RO          469    i.init_mutex        main.o
+    0x1a003376   0x1a003376   0x00000008   Code   RO          281    i.ipc_send_signal   ipc_msg.o
+    0x1a00337e   0x1a00337e   0x00000002   PAD
+    0x1a003380   0x1a003380   0x00000014   Code   RO          370    i.ipcex_register_callback  ipc_example.o
+    0x1a003394   0x1a003394   0x00000030   Code   RO          373    i.ipcex_updateGblVal  ipc_example.o
+    0x1a0033c4   0x1a0033c4   0x00000028   Code   RO          470    i.lock_mutex        main.o
+    0x1a0033ec   0x1a0033ec   0x00000888   Code   RO          471    i.main              main.o
+    0x1a003c74   0x1a003c74   0x00000008   Code   RO          472    i.notify_event      main.o
+    0x1a003c7c   0x1a003c7c   0x000000a0   Code   RO         1413    i.pll_calc_divs     lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
+    0x1a003d1c   0x1a003d1c   0x000000bc   Code   RO         1414    i.pll_get_frac      lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
+    0x1a003dd8   0x1a003dd8   0x00000054   Code   RO          473    i.print             main.o
+    0x1a003e2c   0x1a003e2c   0x00000188   Code   RO          474    i.print_menu        main.o
+    0x1a003fb4   0x1a003fb4   0x0000000c   Code   RO          475    i.setup_board       main.o
+    0x1a003fc0   0x1a003fc0   0x0000003c   Code   RO          476    i.setup_clock_counter  main.o
+    0x1a003ffc   0x1a003ffc   0x0000005c   Code   RO          477    i.setup_request_timer  main.o
+    0x1a004058   0x1a004058   0x0000005c   Code   RO          478    i.setup_system_timer  main.o
+    0x1a0040b4   0x1a0040b4   0x00000030   Code   RO          479    i.setup_uart        main.o
+    0x1a0040e4   0x1a0040e4   0x00000038   Code   RO          480    i.shutdown_M0App    main.o
+    0x1a00411c   0x1a00411c   0x00000010   Code   RO          481    i.start_request_timer  main.o
+    0x1a00412c   0x1a00412c   0x00000010   Code   RO          482    i.start_system_timer  main.o
+    0x1a00413c   0x1a00413c   0x00000010   Code   RO          483    i.stop_request_timer  main.o
+    0x1a00414c   0x1a00414c   0x00000010   Code   RO          484    i.stop_system_timer  main.o
+    0x1a00415c   0x1a00415c   0x00000008   Code   RO          485    i.unlock_mutex      main.o
+    0x1a004164   0x1a004164   0x00000038   Code   RO          486    i.wait_event        main.o
+    0x1a00419c   0x1a00419c   0x0000002c   Code   RO         2497    locale$$code        c_w.l(lc_numeric_c.o)
+    0x1a0041c8   0x1a0041c8   0x0000002c   Code   RO         2518    locale$$code        c_w.l(lc_ctype_c.o)
+    0x1a0041f4   0x1a0041f4   0x0000000c   Code   RO         2395    x$fpl$dretinf       fz_wm.l(dretinf.o)
+    0x1a004200   0x1a004200   0x00000056   Code   RO         2281    x$fpl$f2d           fz_wm.l(f2d.o)
+    0x1a004256   0x1a004256   0x0000008c   Code   RO         2397    x$fpl$fnaninf       fz_wm.l(fnaninf.o)
+    0x1a0042e2   0x1a0042e2   0x0000000a   Code   RO         2584    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x1a0042ec   0x1a0042ec   0x00000004   Code   RO         2401    x$fpl$printf1       fz_wm.l(printf1.o)
+    0x1a0042f0   0x1a0042f0   0x00000000   Code   RO         2403    x$fpl$usenofp       fz_wm.l(usenofp.o)
+    0x1a0042f0   0x1a0042f0   0x00000050   Data   RO          487    .constdata          main.o
+    0x1a004340   0x1a004340   0x00000004   Data   RO          736    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
+    0x1a004344   0x1a004344   0x00000004   Data   RO          737    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
+    0x1a004348   0x1a004348   0x00000006   Data   RO          738    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board.o)
+    0x1a00434e   0x1a00434e   0x00000040   Data   RO         1102    .constdata          lib_lpc_board_nxp_lpcxpresso_4337.lib(board_sysinit.o)
+    0x1a00438e   0x1a00438e   0x0000006c   Data   RO         1415    .constdata          lib_lpc_chip_43xx.lib(clock_18xx_43xx.o)
+    0x1a0043fa   0x1a0043fa   0x00000010   Data   RO         1665    .constdata          lib_lpc_chip_43xx.lib(uart_18xx_43xx.o)
+    0x1a00440a   0x1a00440a   0x00000048   Data   RO         2011    .constdata          lib_lpc_chip_43xx.lib(sysinit_18xx_43xx.o)
+    0x1a004452   0x1a004452   0x00000002   PAD
+    0x1a004454   0x1a004454   0x00000140   Data   RO         2286    .constdata          m_wm.l(powf.o)
+    0x1a004594   0x1a004594   0x00000008   Data   RO         2321    .constdata          c_w.l(_printf_wctomb.o)
+    0x1a00459c   0x1a00459c   0x00000028   Data   RO         2350    .constdata          c_w.l(_printf_hex_int_ll_ptr.o)
+    0x1a0045c4   0x1a0045c4   0x00000011   Data   RO         2370    .constdata          c_w.l(__printf_flags_ss_wp.o)
+    0x1a0045d5   0x1a0045d5   0x00000003   PAD
+    0x1a0045d8   0x1a0045d8   0x00000094   Data   RO         2472    .constdata          c_w.l(bigflt0.o)
+    0x1a00466c   0x1a00466c   0x0000007b   Data   RO          282    .conststring        ipc_msg.o
+    0x1a0046e7   0x1a0046e7   0x00000001   PAD
+    0x1a0046e8   0x1a0046e8   0x00000020   Data   RO         2640    Region$$Table       anon$$obj.o
+    0x1a004708   0x1a004708   0x0000001c   Data   RO         2496    locale$$data        c_w.l(lc_numeric_c.o)
+    0x1a004724   0x1a004724   0x00000110   Data   RO         2517    locale$$data        c_w.l(lc_ctype_c.o)
 
 
 ==============================================================================
@@ -2040,11 +2040,11 @@ Image component sizes
        492        124        123         32          0       5532   ipc_msg.o
         64         24        276          0        768        924   keil_startup_lpc18xx43xx.o
        156         14          0          0          0       5815   m0_img_ldr.o
-      4712       1972         80         76          0      61821   main.o
+      4708       1968         80         76          0      61821   main.o
         28         10          0          0          0       7733   sysinit.o
 
     ----------------------------------------------------------------------
-      5556       2166        512        112       1648      84720   Object Totals
+      5552       2162        512        112       1648      84720   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          4          0          1          0          0          0   (incl. Padding)
 
@@ -2173,15 +2173,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     16864       2854       1624        124       1748     163509   Grand Totals
-     16864       2854       1624        124       1748     163509   ELF Image Totals
-     16864       2854       1624        124          0          0   ROM Totals
+     16860       2850       1624        124       1748     163509   Grand Totals
+     16860       2850       1624        124       1748     163509   ELF Image Totals
+     16860       2850       1624        124          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                18488 (  18.05kB)
+    Total RO  Size (Code + RO Data)                18484 (  18.05kB)
     Total RW  Size (RW Data + ZI Data)              1872 (   1.83kB)
-    Total ROM Size (Code + RO Data + RW Data)      18612 (  18.18kB)
+    Total ROM Size (Code + RO Data + RW Data)      18608 (  18.17kB)
 
 ==============================================================================
 

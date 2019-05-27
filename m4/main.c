@@ -13,7 +13,7 @@
 #define CPU 0
 #define OTHER_CPU 1
 
-#define REQUEST_RATE 1000000 // In DEBUG mode the request rate is 10 per second
+#define REQUEST_RATE 50000 // In DEBUG mode the request rate is 10 per second
 
 /*
 	3
