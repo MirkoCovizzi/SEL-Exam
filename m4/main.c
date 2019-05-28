@@ -162,8 +162,8 @@ void TIMER1_IRQHandler(void)
 static void wait_event(void) {
 	__WFE();
 	while(!notify);
-	print("M4:: RECEIVED NOTIFY!\r\n");
 	notify = 0;
+	print("M4:: RECEIVED NOTIFY!\r\n");
 }
 
 static void notify_event(void) {
