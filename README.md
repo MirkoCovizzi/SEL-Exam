@@ -18,26 +18,26 @@ Senza carico di CPU, questo metodo é sempre più veloce del metodo sincrono, anch
 
 In conclusione, in generale, poiché solitamente i core hanno sempre un proprio carico di CPU, conviene utilizzare un metodo di comunicazione sincrono, il quale é infatti il metodo suggerito nel datasheet della board stessa.
 
-Descrizione funzioni dei moduli M4 ed M0
+Descrizione funzioni dei moduli M4 ed M0APP
 
 M4:
 
 - M0APP_IRQHandler:
-Funzione handler che gestisce gli eventi inviati dal core M0APPal core M4. Ogni volta che ricevo un evento imposto la variabile volatile intera notify a 1. Se sto eseguendo il test numero uno, cioé comunicazione sincrona ad eventi, allora eseguo il blocco di codice opzionale. Nel blocco di codice opzionale il core M4 tenta di estrarre il messaggio dalla propria coda. Calcola inoltre il delta time facendo la differenza tra il valore del contatore di clock attuale ed il valore contenuto nel messaggio.
+Funzione handler che gestisce gli eventi inviati dal core M0APP al core M4. Ogni volta che ricevo un evento imposto la variabile volatile intera notify a 1. Se sto eseguendo il test numero uno, cioé comunicazione sincrona ad eventi, allora eseguo il blocco di codice opzionale. Nel blocco di codice opzionale il core M4 tenta di estrarre il messaggio dalla propria coda. Calcola inoltre il delta time facendo la differenza tra il valore del contatore di clock attuale ed il valore contenuto nel messaggio.
 - TIMER0_IRQHandler:
-Funzione handler per gestire il timer 0. Il timer 0, in questo caso, mi serve per generare azioni periodiche. In modo specifico, per inviare periodicamente messaggi al core M0. In questo handler ho due blocchi opzionali: se il test é il test numero 1, allora confeziono un messaggio da inviare utilizzando le code e quindi il metodo sincrono; se il test é il numero 2, confeziono un messaggio per il core M0, entro nella sezione critica con accesso atomico tramite mutex, scrivo il messaggio nell'area di memoria comune, rilascio il mutex uscendo dalla sezione critica.
+Funzione handler per gestire il timer 0. Il timer 0, in questo caso, mi serve per generare azioni periodiche. In modo specifico, per inviare periodicamente messaggi al core M0APP. In questo handler ho due blocchi opzionali: se il test é il test numero 1, allora confeziono un messaggio da inviare utilizzando le code e quindi il metodo sincrono; se il test é il numero 2, confeziono un messaggio per il core M0, entro nella sezione critica con accesso atomico tramite mutex, scrivo il messaggio nell'area di memoria comune, rilascio il mutex uscendo dalla sezione critica.
 - TIMER1_IRQHandler:
-Semplice contatore temporale
+Semplice contatore temporale.
 - wait_event:
 Implementazione di una wait. In sostanza, il core si blocca finché non riceve una notify dall'altro core.
 - notify_event:
 Implementazione di una notify. Il core che invoca questa funzione manda un segnale all'altro core.
 - init_mutex:
-Inizializzazione del mutex descritto nel paper di Dijkstra
+Inizializzazione del mutex descritto nel paper di Dijkstra.
 - lock_mutex:
 Implementazione della acquisizione del mutex, algoritmo descritto nel paper di Dijkstra.
 - unlock_mutex:
-Rilascio del mutex
+Rilascio del mutex.
 - print:
 Implementazione di una stampa mutuamente esclusiva. Non posso avere due stampe in contemporanea tra i due core.
 - debug:
@@ -47,9 +47,9 @@ Stampa delle opzioni del benchmark.
 - setup_board:
 Inizializzazione della board.
 - boot_M0App:
-Funzione che avvia il core M0APPsecondo le specifiche indicate nel datasheet.
+Funzione che avvia il core M0APP secondo le specifiche indicate nel datasheet.
 - shutdown_M0App:
-Spengo il core M0.
+Spengo il core M0APP.
 - setup_uart:
 Inizializzazione di base di una uart per le stampe.
 - setup_clock_counter:
@@ -61,7 +61,7 @@ Abilita timer che conta i secondi.
 - stop_system_timer:
 Disabilita il teimer che conta i secondi.
 - setup_request_timer:
-Inizializzazione timer per le richieste al core M0
+Inizializzazione timer per le richieste al core M0APP.
 - start_request_timer:
 Abilita timer per le richieste.
 - stop_request_timer:
@@ -69,26 +69,26 @@ Disabilita timer per le richieste.
 - calc_pi:
 Funzione per caricare la CPU di calcolo.
 - main:
-Funzione principale: qui, tramite switch, si passa alle subroutine dei vari test. Ogni test viene inizializzato dal core M4, e tramite comunicazione sincrona il core M0APPviene impostato dal core M4 per poter fare il test selezionato.
+Funzione principale: qui, tramite switch, si passa alle subroutine dei vari test. Ogni test viene inizializzato dal core M4, e tramite comunicazione sincrona il core M0APP viene impostato dal core M4 per poter fare il test selezionato.
 - idle:
 Funzione che calcola l'utilizzo di CPU.
 
-M0:
+M0APP:
 
 - M4_IRQHandler:
 Funzione handler che gestisce gli eventi inviati dal core M4 al core M0. Ogni volta che ricevo un evento imposto la variabile volatile intera notify a 1. Se sto eseguendo il test numero uno, cioé comunicazione sincrona ad eventi, allora eseguo il blocco di codice opzionale. Nel blocco di codice opzionale il core M0APPtenta di estrarre il messaggio dalla propria coda. Calcola inoltre il risultato della richiesta ricevuta generando poi un nuovo messaggio (con il risultato) ed inviandolo al core M4.
 - TIMER3_IRQHandler:
-Semplice contatore temporale
+Semplice contatore temporale.
 - wait_event:
 Implementazione di una wait. In sostanza, il core si blocca finché non riceve una notify dall'altro core.
 - notify_event:
 Implementazione di una notify. Il core che invoca questa funzione manda un segnale all'altro core.
 - init_mutex:
-Inizializzazione del mutex descritto nel paper di Dijkstra
+Inizializzazione del mutex descritto nel paper di Dijkstra.
 - lock_mutex:
 Implementazione della acquisizione del mutex, algoritmo descritto nel paper di Dijkstra.
 - unlock_mutex:
-Rilascio del mutex
+Rilascio del mutex.
 - print:
 Implementazione di una stampa mutuamente esclusiva. Non posso avere due stampe in contemporanea tra i due core.
 - debug:
@@ -100,7 +100,7 @@ Inizializzazione della board.
 - boot_M0App:
 Funzione che avvia il core M0APPsecondo le specifiche indicate nel datasheet.
 - shutdown_M0App:
-Spengo il core M0.
+Spengo il core M0APP.
 - setup_uart:
 Inizializzazione di base di una uart per le stampe.
 - setup_clock_counter:
@@ -114,6 +114,6 @@ Disabilita il teimer che conta i secondi.
 - check_prime:
 Funzione per caricare la CPU di calcolo.
 - main:
-Funzione principale: qui il core M0APPviene configurato dal core M4 ed entra in uno dei test possibili. Al termine del test il core M4 si occuperà di spegnere il core M0. Il core M0, perciò viene avviato e poi spento per ogni test. Da sottolineare, nel test 2, prima di richiedere il mutex entrando nella sezione critica, bisogna sempre disattivare gli interrupt (tramite __disable_irq) e riattivarli dopo il rilascio del mutex, altrimenti, se ho acquisito il mutex e vengo interrotto da un interrupt, potrebbero verificarsi problemi di concorrenza tra i processori. Questa é una pratica a volte usata nei sistemi operativi.
+Funzione principale: qui il core M0APP viene configurato dal core M4 ed entra in uno dei test possibili. Al termine del test il core M4 si occuperà di spegnere il core M0APP. Il core M0APP, perciò viene avviato e poi spento per ogni test. Da sottolineare, nel test 2, prima di richiedere il mutex entrando nella sezione critica, bisogna sempre disattivare gli interrupt (tramite __disable_irq) e riattivarli dopo il rilascio del mutex, altrimenti, se ho acquisito il mutex e vengo interrotto da un interrupt, potrebbero verificarsi problemi di concorrenza tra i processori. Questa é una pratica a volte usata nei sistemi operativi.
 - idle:
 Funzione che calcola l'utilizzo di CPU.
